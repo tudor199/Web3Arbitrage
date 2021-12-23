@@ -1,9 +1,11 @@
+from datetime import datetime
 import sys
 import traceback
 from web3 import Web3
 
 from threading import Thread
 from time import sleep
+from group.group import ETHER_1
 from group.router import Router
 from group.token.base_token import BaseToken
 from group.token.side_token import SideToken
@@ -28,8 +30,8 @@ class Manager:
         self.executor = self.web3.eth.contract(address=model['executorAddr'], abi=self.abi['IExchangeOracle'])
 
         self.routers = list(map(lambda kw: Router(**kw), model['routers']))
-        self.bases = list(map(lambda kw: BaseToken(**kw), model['bases']))
-        self.sides = list(map(lambda kw: SideToken(**kw), model['sides']))
+        self.baseTokens = list(map(lambda kw: BaseToken(**kw), model['bases']))
+        self.sideTokens = list(map(lambda kw: SideToken(**kw), model['sides']))
 
 
         self.refreshRate = refreshRate
@@ -40,15 +42,23 @@ class Manager:
 
 
         self.worker = Worker(self.account, abi, self.web3, self.logger, self.exchangeOracle, self.executor,
-                             self.routers, self.bases, self.sides)
+                             self.routers, self.baseTokens, self.sideTokens)
 
 
     def start(self):
         Thread(target=self.worker.start, daemon=True).start()
+
+        sideTokensAddrs = list(map(lambda sideToken: sideToken.address, self.sideTokens))
         while True:
             try:
+                ethBalance, sideTokensBalance = self.exchangeOracle.functions.getAccountBalance(sideTokensAddrs, self.account['address']).call()
+                msg = f"STATUS\n"
+                for (sideToken, balance) in zip(self.sideTokens, sideTokensBalance):
+                    msg += f"{sideToken.name.ljust(7)}: {'{:.4f}'.format(balance / 10 ** sideToken.decimals)}\n"
+                msg += f"{'ETH'.ljust(7)}: {'{:.4f}'.format(ethBalance / ETHER_1)}\n"
+                msg += f"Time {datetime.now().strftime('%d-%m-%Y at %H:%M:%S')}\n"
+                self.logger.write(msg, 1)
                 sleep(self.refreshRate)
-                print("Hearth bit!")
             except KeyboardInterrupt:
                 self.logger.write("Interrupt by User!", 1)
                 self.logger.close()

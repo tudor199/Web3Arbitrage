@@ -3,6 +3,7 @@ from typing import List
 from web3 import Web3
 from web3.contract import Contract
 from datetime import datetime
+from time import sleep
 
 from group.group import Group
 from group.router import Router
@@ -22,13 +23,13 @@ class Worker:
         self.exchangeOracle = exchangeOracle
         self.executor = executor
         self.routers = routers
-        self.bases = bases
-        self.sides = sides
+        self.baseTokens = bases
+        self.sideTokens = sides
 
     def start(self):
         groups = []
-        for baseToken in self.bases:
-            for sideToken in self.sides:
+        for baseToken in self.baseTokens:
+            for sideToken in self.sideTokens:
                 pairs = []
                 for router in self.routers:
                     routerContract = self.web3.eth.contract(address=router.address, abi=self.abi['IUniswapRouter'])
@@ -46,8 +47,9 @@ class Worker:
                             reserveToken0, reserveToken1 = reserveToken1, reserveToken0
 
                         if reserveToken1 > sideToken.minAmount * 10 ** 18:
-                            print(f"{router.name.ljust(14)} {symbol.ljust(10)} {pairAddr} \
-                                {'{:.8f}'.format(reserveToken1 / reserveToken0)} {'{:.8f}'.format(reserveToken0 / 10 ** 18)} {'{:.8f}'.format(reserveToken1 / 10 ** 18)}")
+                            print(f"{router.name.ljust(15)} {symbol.ljust(15)} {pairAddr}   "
+                                  f"{'{:.8f}'.format(reserveToken1 / reserveToken0 * 10 ** (baseToken.decimals - sideToken.decimals))} "
+                                  f"{'{:.8f}'.format(reserveToken0 / 10 ** baseToken.decimals)} {'{:.8f}'.format(reserveToken1 / 10 ** sideToken.decimals)}")
                             pairs.append(TradingPair(pairAddr, router, baseToken, sideToken, isReversed))
                 if pairs.__len__() > 1:
                     groups.append(Group(pairs))
@@ -58,8 +60,18 @@ class Worker:
         for group in groups:
             offsets.append(offsets[-1] + group.noPairs)
             tradingPairAddrs += list(map(lambda pair: pair.address, group.pairs))
+        
+        sideTokensAddrs = list(map(lambda sideToken: sideToken.address, self.sideTokens))
+        
+        ethBalance = None
+        sideTokensBalance = None
         while True:
             try:
+                if ethBalance is None:
+                    ethBalance, sideTokensBalance = self.exchangeOracle.functions.getAccountBalance(sideTokensAddrs, self.account['address']).call()
+                    for (sideToken, balance) in zip(self.sideTokens, sideTokensBalance):
+                        sideToken.setBalance(balance)
+                    print(ethBalance, sideTokensBalance)
                 print(f"--------------------------{datetime.now()}----------------------------")
                 reservesToken0, reservesToken1 = self.exchangeOracle.functions.getExchangesState(tradingPairAddrs).call()
                 for (i, group) in enumerate(groups):
@@ -68,6 +80,7 @@ class Worker:
                         print(f"FOUND: {order}")
                         quit()
                     print()
+                sleep(1)
 
             except Exception as e:
                 self.logger.write(f"EXCEPTION in {self.__class__.__name__}: {e}!", 1)

@@ -7,11 +7,6 @@
 				"type": "address[]"
 			},
 			{
-				"internalType": "uint256",
-				"name": "n",
-				"type": "uint256"
-			},
-			{
 				"internalType": "address",
 				"name": "account",
 				"type": "address"

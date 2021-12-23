@@ -9,11 +9,12 @@ interface IERC20 {
 }
 
 contract BalanceOracle {
-    function getAccountBalance(address[] memory tokensAddrs, uint256 n, address account)
+    function getAccountBalance(address[] memory tokensAddrs, address account)
         public view returns (uint256 ethBalance, uint256[] memory tokensBalance) {
 
         ethBalance = address(account).balance;
 
+        uint256 n = tokensAddrs.length;
         tokensBalance = new uint256[](n);
         for (uint256 i = 0; i < n; i++) {
             tokensBalance[i] = IERC20(tokensAddrs[i]).balanceOf(account);

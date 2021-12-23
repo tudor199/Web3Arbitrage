@@ -1,7 +1,7 @@
 models = {
     'matic': {
         'provider': 'https://rpc-mainnet.matic.network',
-        'exchangOracleAddr': '0x53B4d2B88d2a6B16FEed7A8Dd81c249A05799952',
+        'exchangOracleAddr': '0x301D28A1f3B833176791Ee8B55cAABcFCA0c1242',
         'executorAddr': '0x53B4d2B88d2a6B16FEed7A8Dd81c249A05799952',
         'routers': [
             {
@@ -21,11 +21,11 @@ models = {
                 'address': '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
                 'decimals': 6,
             },
-            {
-                'name': 'QUICK',
-                'address': '0x831753DD7087CaC61aB5644b308642cc1c33Dc13',
-                'decimals': 18,
-            },
+            # {
+            #     'name': 'QUICK',
+            #     'address': '0x831753DD7087CaC61aB5644b308642cc1c33Dc13',
+            #     'decimals': 18,
+            # },
         ],
         'sides' : [
             {

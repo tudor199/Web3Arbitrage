@@ -14,11 +14,11 @@ class Group:
         self.noPairs = len(pairs)
 
     @staticmethod
-    def bestIaSearch(rtBaseBuy, rtSideBuy, feeNumeratorBuy, rtBaseSell, rtSideSell, feeNumeratorSell):
+    def bestIaSearch(rtBaseBuy, rtSideBuy, feeNumeratorBuy, rtBaseSell, rtSideSell, feeNumeratorSell, decimals):
         if rtSideBuy / rtBaseBuy >= rtSideSell / rtBaseSell:
             return 0, 0
 
-        UNIT_1 = 10 ** 18
+        UNIT_1 = 10 ** decimals
         left = int(0.01 * UNIT_1)
         right = int(1000 * UNIT_1)
         while right - left > 0.1 * UNIT_1:
@@ -36,10 +36,6 @@ class Group:
         return 0, 0
 
     def computeOrder(self, reservesToken0, reservesToken1):
-        '''
-            function execute(uint initialAmount, address router1Addr, address[] memory path1,
-                                                address router2Addr, address[] memory path2) public {
-        '''
         for i in range(self.noPairs):
             if self.pairs[i].isReversed:
                 rtBaseI, rtSideI = reservesToken1[i], reservesToken0[i]
@@ -47,7 +43,7 @@ class Group:
                 rtBaseI, rtSideI = reservesToken0[i], reservesToken1[i]
 
             symbol = f"{self.pairs[i].baseToken.name}_{self.pairs[i].sideToken.name}"
-            print(f"{self.pairs[i].router.name.ljust(15)} {symbol.ljust(10)}   "
+            print(f"{self.pairs[i].router.name.ljust(15)} {symbol.ljust(15)}   "
                   f"{'{:.8f}'.format(rtSideI / rtBaseI * 10 ** (self.pairs[i].baseToken.decimals - self.pairs[i].sideToken.decimals))}   "
                   f"{'{:.8f}'.format(rtBaseI / 10 ** self.pairs[i].baseToken.decimals)} {'{:.8f}'.format(rtSideI / 10 ** self.pairs[i].sideToken.decimals)}")
                          
@@ -65,11 +61,10 @@ class Group:
                     else:
                         rtBasej, rtSidej = reservesToken0[j], reservesToken1[j]
                     amountIn, amountOut = Group.bestIaSearch(rtBasej, rtSidej, self.pairs[i].router.feeNumerator,
-                                                             rtBasej, rtSidej, self.pairs[j].router.feeNumerator)
+                                                             rtBasej, rtSidej, self.pairs[j].router.feeNumerator,
+                                                             self.pairs[i].sideToken.decimals)
 
                     # print(amountIn // ETHER_1, amountOut // ETHER_1)
                     if amountIn > 0:
-                        return (amountIn,
-                                self.pairs[i].router.address, [self.pairs[i].side.address, self.pairs[i].base.address],
-                                self.pairs[j].router.address, [self.pairs[j].base.address, self.pairs[j].side.address])
+                        return (amountIn, self.pairs[i], self.pairs[j])
         return None
