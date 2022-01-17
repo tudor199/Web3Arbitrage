@@ -1,5 +1,6 @@
 
 import argparse
+import json
 
 from manager.manager import Manager
 
@@ -22,6 +23,7 @@ model = models[args.network]
 if args.preprocessing:
     Manager.generateState(abi, model, args.network)
 else:
-    print("Start with constructor!")
-
-
+    f = open(f"state/{args.network}.json", "r")
+    state = json.load(f)
+    f.close()
+    Manager(account, abi, state).start()

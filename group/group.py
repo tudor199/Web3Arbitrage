@@ -25,10 +25,13 @@ def bestIaDeriv(reservesTrxs1, reservesTokens1, reservesTrxs2, reservesTokens2, 
     return (inputAmount, getInputPrice(inputAmount, E0, E1, ra)) if inputAmount > 0 else (0,0)
 
 class Group:
-    def __init__(self, minAmount: int, pairs: List[TradingPair]) -> None:
+    def __init__(self, sideToken, minAmount: int, pairs: list, name: dict, decimals: dict) -> None:
+        self.sideToken = sideToken
         self.minAmount = minAmount
-        self.pairs = pairs
+        self.pairs = list(map(lambda pairJson: TradingPair(**pairJson), pairs))
         self.noPairs = len(pairs)
+        self.name = name
+        self.decimals = decimals
     
     def toJson(self):
         pairsJson = []
@@ -49,10 +52,10 @@ class Group:
             else:
                 rtBaseI, rtSideI = reservesToken0[i], reservesToken1[i]
 
-            symbol = f"{self.pairs[i].baseToken.name}_{self.pairs[i].sideToken.name}"
-            print(f"{self.pairs[i].router.name.ljust(15)} {symbol.ljust(15)}   "
-                  f"{'{:.8f}'.format(rtSideI / rtBaseI * 10 ** (self.pairs[i].baseToken.decimals - self.pairs[i].sideToken.decimals))}   "
-                  f"{'{:.8f}'.format(rtBaseI / 10 ** self.pairs[i].baseToken.decimals)} {'{:.8f}'.format(rtSideI / 10 ** self.pairs[i].sideToken.decimals)}")
+            symbol = f"{self.name[self.pairs[i].baseToken]}_{self.name[self.pairs[i].sideToken]}"
+            print(f"{self.name[self.pairs[i].router].ljust(15)} {symbol.ljust(15)}   "
+                  f"{'{:.8f}'.format(rtSideI / rtBaseI * 10 ** (self.decimals[self.pairs[i].baseToken] - self.decimals[self.pairs[i].sideToken]))}   "
+                  f"{'{:.8f}'.format(rtBaseI / 10 ** self.decimals[self.pairs[i].baseToken])} {'{:.8f}'.format(rtSideI / 10 ** self.decimals[self.pairs[i].sideToken])}")
                          
         for i in range(self.noPairs):
             for j in range(self.noPairs):
@@ -67,10 +70,8 @@ class Group:
                         rtBasej, rtSidej = reservesToken1[j], reservesToken0[j]
                     else:
                         rtBasej, rtSidej = reservesToken0[j], reservesToken1[j]
-                    amountIn, amountOut = bestIaDeriv(rtSidej, rtBasej, rtSidej, rtBasej,
-                                                        self.pairs[i].router.feeNumerator / 10000, self.pairs[j].router.feeNumerator / 10000)
+                    amountIn, amountOut = bestIaDeriv(rtSidej, rtBasej, rtSidej, rtBasej, self.pairs[i].r, self.pairs[j].r)
 
-                    # print(amountIn // ETHER_1, amountOut // ETHER_1)
                     if amountIn > 0:
                         return (amountIn / 10 ** 18, amountOut / 10 ** 18, self.pairs[i], self.pairs[j])
         return None

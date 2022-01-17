@@ -1,5 +1,7 @@
+from collections import Counter
 from datetime import datetime
 import json
+from os import stat
 import sys
 import traceback
 from web3 import Web3
@@ -7,7 +9,6 @@ from web3 import Web3
 from threading import Thread
 from time import sleep
 from group.group import Group
-from group.router import Router
 from group.token.base_token import BaseToken
 from group.token.side_token import SideToken
 from group.trading_pair import TradingPair
@@ -21,30 +22,27 @@ from web3.middleware import geth_poa_middleware
 
 
 class Manager:
-    def __init__(self, account: dict, abi: dict, model: dict, refreshRate: int=600) -> None:
+    def __init__(self, account: dict, abi: dict, state: dict, refreshRate: int=600) -> None:
         self.account = account
         self.abi = abi
 
-        self.web3 = Web3(Web3.HTTPProvider(model['provider']))
+        self.web3 = Web3(Web3.HTTPProvider(state['provider']))
         self.web3.middleware_onion.inject(geth_poa_middleware, layer=0)
         
-        self.exchangeOracle = self.web3.eth.contract(address=model['exchangOracleAddr'], abi=self.abi['IExchangeOracle'])
-        self.executor = self.web3.eth.contract(address=model['executorAddr'], abi=self.abi['IExchangeOracle'])
+        self.exchangeOracle = self.web3.eth.contract(address=state['exchangOracleAddr'], abi=self.abi['IExchangeOracle'])
+        self.executor = self.web3.eth.contract(address=state['executorAddr'], abi=self.abi['IExchangeOracle'])
 
-        self.routers = list(map(lambda kw: Router(**kw), model['routers']))
-        self.baseTokens = list(map(lambda kw: BaseToken(**kw), model['bases']))
-        self.sideTokens = list(map(lambda kw: SideToken(**kw), model['sides']))
-
-
+        self.sideTokens = list(Counter(map(lambda groupJson: groupJson['sideToken'], state['groups'])).keys())
         self.refreshRate = refreshRate
 
         logger = Logger(open("logs.txt", "a"), 0)
         logger = Logger(sys.__stdout__, 1, logger)
         self.logger = Logger(open("orders.txt", "a"), 2, logger)
 
+        self.name = state['name']
+        self.decimals = state['decimals']
 
-        self.worker = Worker(self.account, abi, self.web3, self.logger, self.exchangeOracle, self.executor,
-                             self.routers, self.baseTokens, self.sideTokens)
+        self.worker = Worker(self.account, abi, self.web3, self.logger, self.sideTokens, state['groups'], self.exchangeOracle, self.executor, self.name, self.decimals)
 
     @staticmethod
     def generateState(abi, model, network):
@@ -101,15 +99,14 @@ class Manager:
     def start(self):
         Thread(target=self.worker.start, daemon=True).start()
 
-        sideTokensAddrs = list(map(lambda sideToken: sideToken.address, self.sideTokens))
         while True:
             try:
-                ethBalance, sideTokensBalance = self.exchangeOracle.functions.getAccountBalance(sideTokensAddrs, self.account['address']).call()
+                ethBalance, sideTokensBalance = self.exchangeOracle.functions.getAccountBalance(self.sideTokens, self.account['address']).call()
                 msg = f"STATUS\n"
                 for (sideToken, balance) in zip(self.sideTokens, sideTokensBalance):
-                    msg += f"{sideToken.name.ljust(7)}: {'{:.4f}'.format(balance / 10 ** sideToken.decimals)}\n"
+                    msg += f"{self.name[sideToken].ljust(7)}: {'{:.4f}'.format(balance / 10 ** self.decimals[sideToken])}\n"
                 msg += f"{'ETH'.ljust(7)}: {'{:.4f}'.format(ethBalance / 10 ** 18)}\n"
-                msg += f"Time {datetime.now().strftime('%d-%m-%Y at %H:%M:%S')}\n"
+                msg += f"Time: {datetime.now().strftime('%d-%m-%Y at %H:%M:%S')}\n"
                 self.logger.write(msg, 1)
                 sleep(self.refreshRate)
             except KeyboardInterrupt:

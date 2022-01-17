@@ -1,5 +1,4 @@
 from audioop import add
-from group.router import Router
 from group.token.base_token import BaseToken
 from group.token.side_token import SideToken
 
