@@ -46,10 +46,10 @@ class Worker:
                         if isReversed:
                             reserveToken0, reserveToken1 = reserveToken1, reserveToken0
 
-                        if reserveToken1 > sideToken.minAmount * 10 ** 18:
+                        if reserveToken1 > sideToken.minAmount * 10 ** sideToken.decimals:
                             print(f"{router.name.ljust(15)} {symbol.ljust(15)} {pairAddr}   "
-                                  f"{'{:.8f}'.format(reserveToken1 / reserveToken0 * 10 ** (baseToken.decimals - sideToken.decimals))} "
-                                  f"{'{:.8f}'.format(reserveToken0 / 10 ** baseToken.decimals)} {'{:.8f}'.format(reserveToken1 / 10 ** sideToken.decimals)}")
+                                    f"{'{:.8f}'.format(reserveToken1 / reserveToken0 * 10 ** (baseToken.decimals - sideToken.decimals))} "
+                                    f"{'{:.8f}'.format(reserveToken0 / 10 ** baseToken.decimals)} {'{:.8f}'.format(reserveToken1 / 10 ** sideToken.decimals)}")
                             pairs.append(TradingPair(pairAddr, router, baseToken, sideToken, isReversed))
                 if pairs.__len__() > 1:
                     groups.append(Group(pairs))

@@ -1,0 +1,55 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "tokensAddrs",
+				"type": "address[]"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "getAccountBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "ethBalance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "tokensBalance",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "pairsAddrs",
+				"type": "address[]"
+			}
+		],
+		"name": "getExchangesState",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "reservesToken0",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "reservesToken1",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

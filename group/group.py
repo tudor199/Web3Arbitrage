@@ -1,39 +1,32 @@
+from math import sqrt
 from group.trading_pair import TradingPair
 
 
-ETHER_1 = 10 ** 18
 
-def getInputPrice(input_amount: int, input_reserve: int, output_reserve: int, feeNumerator) -> int:
-    numerator = input_amount * feeNumerator * output_reserve
-    denominator = input_reserve * 10000 + input_amount * feeNumerator
-    return numerator // denominator
+def getInputPrice(input_amount: int, input_reserve: int, output_reserve: int, r=99.7/100) -> int:
+    numerator = output_reserve * r * input_amount
+    denominator = input_reserve + r * input_amount
+    return int(numerator // denominator)
+
+def getVirtualReserves(reservesTrxs1, reservesTokens1, reservesTrxs2, reservesTokens2, ra, rb):
+    return (
+        int((reservesTrxs1 * reservesTokens2) / (reservesTokens2 + reservesTokens1 * rb)),
+        int((rb * reservesTokens1 * reservesTrxs2) / (reservesTokens2 + reservesTokens1 * rb))
+    )
+
+def bestIaDeriv(reservesTrxs1, reservesTokens1, reservesTrxs2, reservesTokens2, ra, rb):
+    E0, E1 = getVirtualReserves(reservesTrxs1, reservesTokens1, reservesTrxs2, reservesTokens2, ra, rb)
+    inputAmount = int((sqrt(E0 * E1 * ra) - E0) / ra)
+    print(ra, rb)
+    print(10000, getInputPrice(10000, E0, E1, ra))
+    print(10000, getInputPrice(getInputPrice(10000, reservesTrxs1, reservesTokens1, ra), reservesTokens2, reservesTrxs2, rb))
+    return (inputAmount, getInputPrice(inputAmount, E0, E1, ra)) if inputAmount > 0 else (0,0)
 
 class Group:
     def __init__(self, pairs) -> None:
         self.pairs = pairs
         self.noPairs = len(pairs)
 
-    @staticmethod
-    def bestIaSearch(rtBaseBuy, rtSideBuy, feeNumeratorBuy, rtBaseSell, rtSideSell, feeNumeratorSell, decimals):
-        if rtSideBuy / rtBaseBuy >= rtSideSell / rtBaseSell:
-            return 0, 0
-
-        UNIT_1 = 10 ** decimals
-        left = int(0.01 * UNIT_1)
-        right = int(1000 * UNIT_1)
-        while right - left > 0.1 * UNIT_1:
-            mid = (left + right) // 2
-            profit = getInputPrice(getInputPrice(mid, rtSideBuy, rtBaseBuy, feeNumeratorBuy), rtBaseSell, rtSideSell,feeNumeratorSell) - mid
-            midRight = int(mid * 1.01)
-            profitRight = getInputPrice(getInputPrice(midRight, rtSideBuy, rtBaseBuy, feeNumeratorBuy), rtBaseSell, rtSideSell, feeNumeratorSell) - midRight
-            # print(left // UNIT_1, right // UNIT_1, mid // UNIT_1, profit // UNIT_1)
-            if profit < profitRight:
-                left = midRight
-            else:
-                right = mid
-        if profit > 0:
-            return mid, mid + profit
-        return 0, 0
 
     def computeOrder(self, reservesToken0, reservesToken1):
         for i in range(self.noPairs):
@@ -60,11 +53,10 @@ class Group:
                         rtBasej, rtSidej = reservesToken1[j], reservesToken0[j]
                     else:
                         rtBasej, rtSidej = reservesToken0[j], reservesToken1[j]
-                    amountIn, amountOut = Group.bestIaSearch(rtBasej, rtSidej, self.pairs[i].router.feeNumerator,
-                                                             rtBasej, rtSidej, self.pairs[j].router.feeNumerator,
-                                                             self.pairs[i].sideToken.decimals)
+                    amountIn, amountOut = bestIaDeriv(rtSidej, rtBasej, rtSidej, rtBasej,
+                                                        self.pairs[i].router.feeNumerator / 10000, self.pairs[j].router.feeNumerator / 10000)
 
                     # print(amountIn // ETHER_1, amountOut // ETHER_1)
                     if amountIn > 0:
-                        return (amountIn, self.pairs[i], self.pairs[j])
+                        return (amountIn / 10 ** 18, amountOut / 10 ** 18, self.pairs[i], self.pairs[j])
         return None
