@@ -94,7 +94,7 @@ class Manager:
 
         
         print(json.dumps(state, indent=4))
-        f = open("state/polygon.json", "w")
+        f = open(f"state/{network}.json", "w")
         json.dump(state, f, indent=4)
         f.close()
 
