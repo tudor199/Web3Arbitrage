@@ -1,4 +1,6 @@
 from math import sqrt
+from tokenize import group
+from typing import List
 from group.trading_pair import TradingPair
 
 
@@ -23,9 +25,21 @@ def bestIaDeriv(reservesTrxs1, reservesTokens1, reservesTrxs2, reservesTokens2, 
     return (inputAmount, getInputPrice(inputAmount, E0, E1, ra)) if inputAmount > 0 else (0,0)
 
 class Group:
-    def __init__(self, pairs) -> None:
+    def __init__(self, minAmount: int, pairs: List[TradingPair]) -> None:
+        self.minAmount = minAmount
         self.pairs = pairs
         self.noPairs = len(pairs)
+    
+    def toJson(self):
+        pairsJson = []
+        for pair in self.pairs:
+            pairsJson.append(pair.toJson())
+
+        return {
+            "sideToken": self.pairs[0].sideToken,
+            "minAmount": self.minAmount,
+            "pairs": pairsJson
+        }
 
 
     def computeOrder(self, reservesToken0, reservesToken1):

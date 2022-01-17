@@ -1,3 +1,5 @@
+import json
+from textwrap import indent
 import traceback
 from typing import List
 from web3 import Web3
@@ -25,9 +27,7 @@ class Worker:
         self.routers = routers
         self.baseTokens = bases
         self.sideTokens = sides
-
-    def start(self):
-        groups = []
+        self.groups = []
         for baseToken in self.baseTokens:
             for sideToken in self.sideTokens:
                 pairs = []
@@ -52,16 +52,34 @@ class Worker:
                                     f"{'{:.8f}'.format(reserveToken0 / 10 ** baseToken.decimals)} {'{:.8f}'.format(reserveToken1 / 10 ** sideToken.decimals)}")
                             pairs.append(TradingPair(pairAddr, router, baseToken, sideToken, isReversed))
                 if pairs.__len__() > 1:
-                    groups.append(Group(pairs))
+                    self.groups.append(Group(pairs))
                 print()
+
+    def start(self):
+        state = {
+            'provider': self.web3.provider.endpoint_uri,
+            'exchangOracleAddr': self.exchangeOracle.address,
+            'executorAddr': self.executor.address,
+            'name': dict(map(lambda x: (x.address, x.name), self.routers + self.baseTokens + self.sideTokens)),
+            'decimals': dict(map(lambda x: (x.address, x.decimals), self.baseTokens + self.sideTokens)),
+            'groups' : []
+        }
+        for group in self.groups:
+            state['groups'].append(group.toJson())
+        print(json.dumps(state, indent=4))
+        f = open("setup/polygon.json", "w")
+        json.dump(state, f, indent=4)
+        f.close()
+        return
 
         offsets = [0]
         tradingPairAddrs = []
-        for group in groups:
+        for group in self.groups:
             offsets.append(offsets[-1] + group.noPairs)
             tradingPairAddrs += list(map(lambda pair: pair.address, group.pairs))
         
         sideTokensAddrs = list(map(lambda sideToken: sideToken.address, self.sideTokens))
+
         
         ethBalance = None
         sideTokensBalance = None
@@ -74,7 +92,7 @@ class Worker:
                     print(ethBalance, sideTokensBalance)
                 print(f"--------------------------{datetime.now()}----------------------------")
                 reservesToken0, reservesToken1 = self.exchangeOracle.functions.getExchangesState(tradingPairAddrs).call()
-                for (i, group) in enumerate(groups):
+                for (i, group) in enumerate(self.groups):
                     order = group.computeOrder(reservesToken0[offsets[i] : offsets[i + 1]], reservesToken1[offsets[i] : offsets[i + 1]])
                     if order:
                         print(f"FOUND: {order}")

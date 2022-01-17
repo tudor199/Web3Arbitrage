@@ -1,5 +1,5 @@
 models = {
-    'matic': {
+    'polygon': {
         # 'provider': 'https://rpc-mainnet.matic.network',
         'provider': 'https://matic-mainnet.chainstacklabs.com',
         
@@ -9,27 +9,27 @@ models = {
             {
                 'name': 'QuickSwap',
                 'address': '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff',
-                'feeNumerator': 9970,
+                'r': 0.9970,
             },
             {
                 'name': 'SushiSwap',
                 'address': '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
-                'feeNumerator': 9970,
+                'r': 0.9970,
             },
             {
                 'name': 'ApeSwap',
                 'address': '0xC0788A3aD43d79aa53B09c2EaCc313A787d1d607',
-                'feeNumerator': 9980,
+                'r': 0.9980,
             },
             {
                 'name': 'Polycat',
                 'address': '0x94930a328162957FF1dd48900aF67B5439336cBD',
-                'feeNumerator': 9975,
+                'r': 0.9975,
             },
             {
                 'name': 'Dfyn',
                 'address': '0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429',
-                'feeNumerator': 9975,
+                'r': 0.9975,
             },
         ],
         'bases': [
