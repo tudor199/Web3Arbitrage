@@ -6,13 +6,24 @@
         "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270": "WMATIC",
         "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619": "WETH",
         "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174": "USDC",
-        "0xc2132D05D31c914a87C6611C10748AEb04B58e8F": "USDT",
-        "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063": "DAI",
         "0x831753DD7087CaC61aB5644b308642cc1c33Dc13": "QUICK",
         "0xD6DF932A45C0f255f85145f286eA0b292B21C90B": "AAVE",
         "0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a": "SUSHI",
         "0xC168E40227E4ebD8C1caE80F7a55a4F0e6D66C97": "DFYN",
         "0xFbdd194376de19a88118e84E279b977f165d01b8": "BIFI",
+        "0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b": "AVAX",
+        "0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539": "ADDY",
+        "0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3": "BAL",
+        "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39": "LINK",
+        "0xb33EaAd8d922B1083446DC23f610c2567fB5180f": "UNI",
+        "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4": "MANA",
+        "0x692597b009d13C4049a947CAB2239b7d6517875F": "UST",
+        "0x172370d5Cd63279eFa6d502DAB29171933a610AF": "CRV",
+        "0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683": "SAND",
+        "0x8505b9d2254A7Ae468c0E9dd10Ccea3A837aef5c": "COMP",
+        "0x50B728D8D964fd00C2d0AAD81718b71311feF68a": "SNX",
+        "0x9c2C5fd7b07E95EE044DDeba0E97a665F142394f": "1INCH",
+        "0xDA537104D6A5edd53c6fBba9A898708E465260b6": "YFI",
         "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff": "QuickSwap",
         "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506": "SushiSwap",
         "0xC0788A3aD43d79aa53B09c2EaCc313A787d1d607": "ApeSwap",
@@ -23,13 +34,24 @@
         "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270": 18,
         "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619": 18,
         "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174": 6,
-        "0xc2132D05D31c914a87C6611C10748AEb04B58e8F": 6,
-        "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063": 18,
         "0x831753DD7087CaC61aB5644b308642cc1c33Dc13": 18,
         "0xD6DF932A45C0f255f85145f286eA0b292B21C90B": 18,
         "0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a": 18,
         "0xC168E40227E4ebD8C1caE80F7a55a4F0e6D66C97": 18,
-        "0xFbdd194376de19a88118e84E279b977f165d01b8": 18
+        "0xFbdd194376de19a88118e84E279b977f165d01b8": 18,
+        "0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b": 18,
+        "0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539": 18,
+        "0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3": 18,
+        "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39": 18,
+        "0xb33EaAd8d922B1083446DC23f610c2567fB5180f": 18,
+        "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4": 18,
+        "0x692597b009d13C4049a947CAB2239b7d6517875F": 18,
+        "0x172370d5Cd63279eFa6d502DAB29171933a610AF": 18,
+        "0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683": 18,
+        "0x8505b9d2254A7Ae468c0E9dd10Ccea3A837aef5c": 18,
+        "0x50B728D8D964fd00C2d0AAD81718b71311feF68a": 18,
+        "0x9c2C5fd7b07E95EE044DDeba0E97a665F142394f": 18,
+        "0xDA537104D6A5edd53c6fBba9A898708E465260b6": 18
     },
     "groups": [
         {
@@ -345,6 +367,636 @@
                     "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
                     "r": 0.997,
                     "baseToken": "0xFbdd194376de19a88118e84E279b977f165d01b8",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+            "minAmount": 2000000000000000000,
+            "pairs": [
+                {
+                    "address": "0xEb477AE74774b697B5D515eF8ca09e24FEe413b5",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x3370C17c0411D2Ce90A59162e3b3ec348c84768d",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+            "minAmount": 1000000000000000,
+            "pairs": [
+                {
+                    "address": "0xD01897A6363ec0407eE08Ab145142fF9c4C3d691",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": false
+                },
+                {
+                    "address": "0x1274De0DE2e9D9b1d0E06313c0E5EdD01CC335eF",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": false
+                }
+            ]
+        },
+        {
+            "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+            "minAmount": 2000000000000000000,
+            "pairs": [
+                {
+                    "address": "0xF2055643108305d6A56278f5f0191Cd0286c7edc",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x886Ba8107b3FF9FC71834c33B220c9410ec1aBFF",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+            "minAmount": 1000000000000000,
+            "pairs": [
+                {
+                    "address": "0xa5BF14BB945297447fE96f6cD1b31b40d31175CB",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                },
+                {
+                    "address": "0xB6d9a4649c579B8768f1cb55e9dd6Ba99581e4a9",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                },
+                {
+                    "address": "0xFEc9CFd844C6C7aa3b6200bC0c8F5ECDCD0f70C1",
+                    "router": "0xC0788A3aD43d79aa53B09c2EaCc313A787d1d607",
+                    "r": 0.998,
+                    "baseToken": "0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+            "minAmount": 5000000,
+            "pairs": [
+                {
+                    "address": "0xb674EC53adC1d72a2a25d2B5109A766cE6AD1083",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x5fcb390B4422f4FF7940c23618A62BF5f69658A8",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+            "minAmount": 2000000000000000000,
+            "pairs": [
+                {
+                    "address": "0xA3f2cE9f86F2E7E18Df141b6544fc906AD43F434",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x81E3dd9A4d58eC92AD575342967636Ae1A24CF2b",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+            "minAmount": 2000000000000000000,
+            "pairs": [
+                {
+                    "address": "0x3c986748414A812e455DCd5418246B8fdEd5C369",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x68ccE7049013ca8df91CD512ceFEe8FC0bb8d926",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                },
+                {
+                    "address": "0xa8EcA6Cc6Fb9F8Cfa9D3B17D4997ccE79E5110cf",
+                    "router": "0xC0788A3aD43d79aa53B09c2EaCc313A787d1d607",
+                    "r": 0.998,
+                    "baseToken": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+            "minAmount": 1000000000000000,
+            "pairs": [
+                {
+                    "address": "0x5cA6CA6c3709E1E6CFe74a50Cf6B2B6BA2Dadd67",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": false
+                },
+                {
+                    "address": "0x74D23F21F780CA26B47Db16B0504F2e3832b9321",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": false
+                },
+                {
+                    "address": "0xab291E39CD0F8235BA42A20a86F996A3F8B934e1",
+                    "router": "0xC0788A3aD43d79aa53B09c2EaCc313A787d1d607",
+                    "r": 0.998,
+                    "baseToken": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": false
+                },
+                {
+                    "address": "0x4F19aD546C66016042623B7ADe88923c161e3a3A",
+                    "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
+                    "r": 0.9975,
+                    "baseToken": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": false
+                }
+            ]
+        },
+        {
+            "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+            "minAmount": 5000000,
+            "pairs": [
+                {
+                    "address": "0x70ceE55c98F6DA2685807611f115eA737d4a248E",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x8bC8e9F621EE8bAbda8DC0E6Fc991aAf9BF8510b",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x86cC48EDcedff70AdAcBA59dEA9B61670f90eAc3",
+                    "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
+                    "r": 0.9975,
+                    "baseToken": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+            "minAmount": 2000000000000000000,
+            "pairs": [
+                {
+                    "address": "0xc45092e7e73951c6668f6C46AcFCa9F2B1c69aEf",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0xb33EaAd8d922B1083446DC23f610c2567fB5180f",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x7FAe0648684ec375176E2d0F171cA9814798D920",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0xb33EaAd8d922B1083446DC23f610c2567fB5180f",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+            "minAmount": 1000000000000000,
+            "pairs": [
+                {
+                    "address": "0xF7135272a5584Eb116f5a77425118a8B4A2ddfDb",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0xb33EaAd8d922B1083446DC23f610c2567fB5180f",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                },
+                {
+                    "address": "0xc56060aF39152C614fA67E169c0DD1809a886e4F",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0xb33EaAd8d922B1083446DC23f610c2567fB5180f",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                },
+                {
+                    "address": "0xb5E1a07c9b6aB3BEe8d9Bf4066D324c5da89C07F",
+                    "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
+                    "r": 0.9975,
+                    "baseToken": "0xb33EaAd8d922B1083446DC23f610c2567fB5180f",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+            "minAmount": 2000000000000000000,
+            "pairs": [
+                {
+                    "address": "0x6b0Ce31eAD9b14c2281D80A5DDE903AB0855313A",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x672D867B6F598a24fa0588c7bc181019D7dB84CA",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+            "minAmount": 1000000000000000,
+            "pairs": [
+                {
+                    "address": "0x814B6c10Bf752bBbea7Bd68e5e65dC28B4F45982",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                },
+                {
+                    "address": "0xc48AE82ca34C63887b975F20ABA91a38f2a900B8",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                },
+                {
+                    "address": "0xddA1e1A0f0a5A6De8d31D1de0d64bC37c21296b9",
+                    "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
+                    "r": 0.9975,
+                    "baseToken": "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+            "minAmount": 5000000,
+            "pairs": [
+                {
+                    "address": "0x0F9D098B5CA1eff5B1F7FeFebb429bA5c7D67bdc",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x692597b009d13C4049a947CAB2239b7d6517875F",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x216941E9c3DdA2A86C1E6285379E0301Bc8C0c4a",
+                    "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
+                    "r": 0.9975,
+                    "baseToken": "0x692597b009d13C4049a947CAB2239b7d6517875F",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+            "minAmount": 2000000000000000000,
+            "pairs": [
+                {
+                    "address": "0x634F9d9f8680349b518cb615017C105aF46CCFd2",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x140EA3fae80A2732eBc4DE0511FF84EF1A575217",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x7433aFe84dF37d0954fF87D7F5788F124f8597F8",
+                    "router": "0xC0788A3aD43d79aa53B09c2EaCc313A787d1d607",
+                    "r": 0.998,
+                    "baseToken": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+            "minAmount": 1000000000000000,
+            "pairs": [
+                {
+                    "address": "0xaB4F7A3199B2Cd7A8bFb425941EAd08FAcb6d617",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": false
+                },
+                {
+                    "address": "0x396E655C309676cAF0acf4607a868e0CDed876dB",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": false
+                },
+                {
+                    "address": "0x3a8A6831a1E866C64Bc07c3dF0f7B79ac9Ef2fA2",
+                    "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
+                    "r": 0.9975,
+                    "baseToken": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": false
+                }
+            ]
+        },
+        {
+            "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+            "minAmount": 5000000,
+            "pairs": [
+                {
+                    "address": "0x8982D71337003cd172198739238adA0D5d0BD2Fe",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": false
+                },
+                {
+                    "address": "0x982c529Fd47CBa8f627c2aBE30286c69aB593501",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": false
+                },
+                {
+                    "address": "0xCF8172441b953e9609C425FCE91B32BE780FDFBD",
+                    "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
+                    "r": 0.9975,
+                    "baseToken": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": false
+                }
+            ]
+        },
+        {
+            "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+            "minAmount": 2000000000000000000,
+            "pairs": [
+                {
+                    "address": "0x369582d2010B6eD950B571F4101e3bB9b554876F",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x1fC05157e66300377b637E93262B355d405F71c6",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+            "minAmount": 1000000000000000,
+            "pairs": [
+                {
+                    "address": "0x100E0cFcaDb56C05f614502B4fe8e4F7A501ef34",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x91A94765dF00f4C148364b2a2C624A854C6B3a1b",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+            "minAmount": 2000000000000000000,
+            "pairs": [
+                {
+                    "address": "0xbc7de021CC17a0399bEe6b9FE9531E78c10526a7",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x8505b9d2254A7Ae468c0E9dd10Ccea3A837aef5c",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                },
+                {
+                    "address": "0xF8326C8aED2d21364fdD7D4ffc0C771755d8F55c",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x8505b9d2254A7Ae468c0E9dd10Ccea3A837aef5c",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+            "minAmount": 2000000000000000000,
+            "pairs": [
+                {
+                    "address": "0x435711ef539e90fA1381566EDCf2721C3EBE9dcd",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x50B728D8D964fd00C2d0AAD81718b71311feF68a",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x1807caC8576468d96A09a2C04Fbdf6fDf0ed2A1d",
+                    "router": "0xC0788A3aD43d79aa53B09c2EaCc313A787d1d607",
+                    "r": 0.998,
+                    "baseToken": "0x50B728D8D964fd00C2d0AAD81718b71311feF68a",
+                    "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+            "minAmount": 1000000000000000,
+            "pairs": [
+                {
+                    "address": "0x116Ff0d1Caa91a6b94276b3471f33dbeB52073E7",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x50B728D8D964fd00C2d0AAD81718b71311feF68a",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": false
+                },
+                {
+                    "address": "0x64d372DFED8C0bE989D51c955b4bb2F8F848B461",
+                    "router": "0xC0788A3aD43d79aa53B09c2EaCc313A787d1d607",
+                    "r": 0.998,
+                    "baseToken": "0x50B728D8D964fd00C2d0AAD81718b71311feF68a",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": false
+                }
+            ]
+        },
+        {
+            "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+            "minAmount": 5000000,
+            "pairs": [
+                {
+                    "address": "0x5518037AB78552b4a043d89522aCA16206ef9eaf",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x50B728D8D964fd00C2d0AAD81718b71311feF68a",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x110bC65553bb8013b9Db639FE269Cc4BA5d3A9A9",
+                    "router": "0xC0788A3aD43d79aa53B09c2EaCc313A787d1d607",
+                    "r": 0.998,
+                    "baseToken": "0x50B728D8D964fd00C2d0AAD81718b71311feF68a",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+            "minAmount": 1000000000000000,
+            "pairs": [
+                {
+                    "address": "0x94dFd065b57F2a857A693E40f399C51D6b76C739",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x9c2C5fd7b07E95EE044DDeba0E97a665F142394f",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                },
+                {
+                    "address": "0xC5d835aC2920beB604d19CfF456afF7f132E33Ec",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x9c2C5fd7b07E95EE044DDeba0E97a665F142394f",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
+            "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+            "minAmount": 1000000000000000,
+            "pairs": [
+                {
+                    "address": "0xfB5E6eB1C844B04924121Fb0bf6b9623FC0b9F4d",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0xDA537104D6A5edd53c6fBba9A898708E465260b6",
+                    "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+                    "isReversed": true
+                },
+                {
+                    "address": "0xdFA3dDd1807DB8E4B4851D2E5421374e433a2983",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0xDA537104D6A5edd53c6fBba9A898708E465260b6",
                     "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
                     "isReversed": true
                 }

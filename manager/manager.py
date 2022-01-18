@@ -73,9 +73,16 @@ class Manager:
                             print(f"{router['name'].ljust(15)} {symbol.ljust(15)} {pairAddr}   "
                                     f"{'{:.8f}'.format(reserveToken1 / reserveToken0 * 10 ** (baseToken['decimals'] - sideToken['decimals']))} "
                                     f"{'{:.8f}'.format(reserveToken0 / 10 ** baseToken['decimals'])} {'{:.8f}'.format(reserveToken1 / 10 ** sideToken['decimals'])}")
-                            pairs.append(TradingPair(pairAddr, router['address'], router['r'], baseToken['address'], sideToken['address'], isReversed))
+                            pairs.append({
+                                "address" : pairAddr,
+                                "router" : router['address'],
+                                "r" : router['r'],
+                                "baseToken" : baseToken['address'],
+                                "sideToken" : sideToken['address'],
+                                "isReversed" : isReversed
+                            })
                 if pairs.__len__() > 1:
-                    groups.append(Group(minAmount, pairs))
+                    groups.append(Group(sideToken['address'], minAmount, pairs))
                 print()
 
         groupsJson = []

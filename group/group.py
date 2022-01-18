@@ -25,7 +25,7 @@ def bestIaDeriv(reservesTrxs1, reservesTokens1, reservesTrxs2, reservesTokens2, 
     return (inputAmount, getInputPrice(inputAmount, E0, E1, ra)) if inputAmount > 0 else (0,0)
 
 class Group:
-    def __init__(self, sideToken, minAmount: int, pairs: list, name: dict, decimals: dict) -> None:
+    def __init__(self, sideToken, minAmount: int, pairs: list, name: dict={}, decimals: dict={}) -> None:
         self.sideToken = sideToken
         self.minAmount = minAmount
         self.pairs = list(map(lambda pairJson: TradingPair(**pairJson), pairs))

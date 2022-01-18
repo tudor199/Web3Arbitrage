@@ -58,6 +58,71 @@ models = {
                 'address': '0xFbdd194376de19a88118e84E279b977f165d01b8',
                 'decimals': 18,
             },
+            {
+                'name': 'AVAX',
+                'address': '0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b',
+                'decimals': 18,
+            },
+            {
+                'name': 'ADDY',
+                'address': '0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539',
+                'decimals': 18,
+            },
+            {
+                'name': 'BAL',
+                'address': '0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3',
+                'decimals': 18,
+            },
+            {
+                'name': 'LINK',
+                'address': '0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39',
+                'decimals': 18,
+            },
+            {
+                'name': 'UNI',
+                'address': '0xb33EaAd8d922B1083446DC23f610c2567fB5180f',
+                'decimals': 18,
+            },
+            {
+                'name': 'MANA',
+                'address': '0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4',
+                'decimals': 18,
+            },
+            {
+                'name': 'UST',
+                'address': '0x692597b009d13C4049a947CAB2239b7d6517875F',
+                'decimals': 18,
+            },
+            {
+                'name': 'CRV',
+                'address': '0x172370d5Cd63279eFa6d502DAB29171933a610AF',
+                'decimals': 18,
+            },
+            {
+                'name': 'SAND',
+                'address': '0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683',
+                'decimals': 18,
+            },
+            {
+                'name': 'COMP',
+                'address': '0x8505b9d2254A7Ae468c0E9dd10Ccea3A837aef5c',
+                'decimals': 18,
+            },
+            {
+                'name': 'SNX',
+                'address': '0x50B728D8D964fd00C2d0AAD81718b71311feF68a',
+                'decimals': 18,
+            },
+            {
+                'name': '1INCH',
+                'address': '0x9c2C5fd7b07E95EE044DDeba0E97a665F142394f',
+                'decimals': 18,
+            },
+            {
+                'name': 'YFI',
+                'address': '0xDA537104D6A5edd53c6fBba9A898708E465260b6',
+                'decimals': 18,
+            },
         ],
         'sides' : [
             {
@@ -76,18 +141,6 @@ models = {
                 'name': 'USDC',
                 'address': '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
                 'decimals': 6,
-                'minAmount': 5,
-            },
-            {
-                'name': 'USDT',
-                'address': '0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
-                'decimals': 6,
-                'minAmount': 5,
-            },
-            {
-                'name': 'DAI',
-                'address': '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
-                'decimals': 18,
                 'minAmount': 5,
             },
         ],

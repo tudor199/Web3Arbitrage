@@ -16,7 +16,7 @@ from utils.utilities import address0
 
 class Worker:
     def __init__(self, account: dict, abi: dict, web3: Web3, logger: Logger, sideTokens: list, groupsJson: list,
-                 exchangeOracle: Contract, executor: Contract, name: dict, decimals: dict) -> None:
+                 exchangeOracle: Contract, executor: Contract, name: dict={}, decimals: dict={}) -> None:
         self.account = account
         self.abi = abi
         self.web3 = web3

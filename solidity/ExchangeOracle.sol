@@ -21,7 +21,9 @@ contract BalanceOracle {
         }
     }
 
-    function getExchangesState(address[] memory pairsAddrs) public view returns (uint256[] memory reservesToken0, uint256[] memory reservesToken1) {
+    function getExchangesState(address[] memory pairsAddrs)
+        public view returns (uint256[] memory reservesToken0, uint256[] memory reservesToken1) {
+
         uint256 n = pairsAddrs.length;
         reservesToken0 = new uint256[](n);
         reservesToken1 = new uint256[](n);
