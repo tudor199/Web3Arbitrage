@@ -30,7 +30,7 @@ class Manager:
         self.web3.middleware_onion.inject(geth_poa_middleware, layer=0)
         
         self.exchangeOracle = self.web3.eth.contract(address=state['exchangOracleAddr'], abi=self.abi['IExchangeOracle'])
-        self.executor = self.web3.eth.contract(address=state['executorAddr'], abi=self.abi['IExchangeOracle'])
+        self.executor = self.web3.eth.contract(address=state['executorAddr'], abi=self.abi['IArbitrageExecutor'])
 
         self.sideTokens = list(Counter(map(lambda groupJson: groupJson['sideToken'], state['groups'])).keys())
         self.refreshRate = refreshRate

@@ -48,8 +48,35 @@ class Worker:
                 for (i, group) in enumerate(self.groups):
                     order = group.computeOrder(reservesToken0[offsets[i] : offsets[i + 1]], reservesToken1[offsets[i] : offsets[i + 1]])
                     if order:
-                        print(f"FOUND: {order}")
-                        quit()
+                        amountIn, amountOut, pairBuy, pairSell = order
+                        print(f"{pairBuy.address} ({self.name[pairBuy.router]}) -> {pairSell.address} ({self.name[pairSell.router]})")
+                        print(f"FOUND {self.name[pairBuy.sideToken]}: {amountIn / 10 ** 6} -> {amountOut / 10 ** 6} ")
+                        minProfit = 1000
+                        if amountOut - amountIn > minProfit:
+                            tx = self.executor.functions.execute(amountIn, minProfit,
+                                                                 pairBuy.address, int(pairBuy.r * 10000),
+                                                                 pairSell.address, int(pairSell.r * 10000),
+                                                                 pairBuy.sideToken, pairBuy.baseToken
+                            ).buildTransaction({
+                                'gas': 1_000_000,
+                                'gasPrice': self.web3.toWei(2, 'GWEI'),
+                                'from': self.account['address'],
+                                'nonce': self.web3.eth.getTransactionCount(self.account['address'])
+                            })
+
+                            gas_estimate = self.web3.eth.estimateGas(tx)
+                            print(f"GasEstimate: {gas_estimate}")
+                            signedTransaction = self.web3.eth.account.signTransaction(tx, private_key=self.account['privateKey'])
+                            self.web3.eth.sendRawTransaction(signedTransaction.rawTransaction)
+                            txHash = signedTransaction['hash'].hex()
+                            self.logger.write(f"txHash: {txHash}", 1)
+                            while True:
+                                receipt = self.web3.eth.waitForTransactionReceipt(txHash)
+                                if receipt:
+                                    for key in receipt:
+                                        self.logger.write(f"{key}: {receipt[key]}", 1)
+                                    break
+                            quit()
                     print()
                 sleep(1)
 

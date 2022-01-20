@@ -1,4 +1,38 @@
 models = {
+    'testpolygon' :{
+        'provider': 'https://rpc-mumbai.maticvigil.com',
+        
+        'exchangOracleAddr': '0x67E36E2a685d8962C3A68B9ABfc130c785BAA6cF',
+        'executorAddr': '0x3Edc107c692FA16bd26df79B6114432C9e4ea772',
+        'routers': [
+            {
+                'name': 'QuickSwap',
+                'address': '0x8954AfA98594b838bda56FE4C12a09D7739D179b',
+                'r': 0.9970,
+            },
+            {
+                'name': 'ApeSwap',
+                'address': '0x8fCf4B197A9Df7ab4ed511932cA6c8E1a8fe2F1d',
+                'r': 0.9980,
+            },
+        ],
+        'bases': [
+            {
+                'name': 'myBTC',
+                'address': '0x8443F3F43dFe3C6A137e64e04DF00e2C3414cF34',
+                'decimals': 6,
+                'minAmount': 0.001,
+            },
+        ],
+        'sides' : [
+            {
+                'name': 'myUSDT',
+                'address': '0x7409684532FF723d8285F9cDE9F99fD36133609A',
+                'decimals': 6,
+                'minAmount': 0.001,
+            },
+        ],
+    },
     'polygon': {
         # 'provider': 'https://rpc-mainnet.matic.network',
         'provider': 'https://matic-mainnet.chainstacklabs.com',
@@ -159,4 +193,6 @@ abi = {
     'IUniswapFactory': readJson('abi/IUniswapFactory.json'),
     'IUniswapPair': readJson('abi/IUniswapPair.json'),
     'IExchangeOracle': readJson('abi/IExchangeOracle.json'),
+    'IArbitrageExecutor': readJson('abi/IArbitrageExecutor.json'),
+    'IERC20': readJson('abi/IERC20.json'),
 }

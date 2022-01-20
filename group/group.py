@@ -1,11 +1,10 @@
 from math import sqrt
-from tokenize import group
-from typing import List
+from typing import Tuple
 from group.trading_pair import TradingPair
 
 
 
-def getInputPrice(input_amount: int, input_reserve: int, output_reserve: int, r=99.7/100) -> int:
+def getInputPrice(input_amount: int, input_reserve: int, output_reserve: int, r) -> int:
     numerator = output_reserve * r * input_amount
     denominator = input_reserve + r * input_amount
     return int(numerator // denominator)
@@ -19,9 +18,11 @@ def getVirtualReserves(reservesTrxs1, reservesTokens1, reservesTrxs2, reservesTo
 def bestIaDeriv(reservesTrxs1, reservesTokens1, reservesTrxs2, reservesTokens2, ra, rb):
     E0, E1 = getVirtualReserves(reservesTrxs1, reservesTokens1, reservesTrxs2, reservesTokens2, ra, rb)
     inputAmount = int((sqrt(E0 * E1 * ra) - E0) / ra)
-    print(ra, rb)
-    print(10000, getInputPrice(10000, E0, E1, ra))
-    print(10000, getInputPrice(getInputPrice(10000, reservesTrxs1, reservesTokens1, ra), reservesTokens2, reservesTrxs2, rb))
+    # print(ra, rb)
+    # TODO bad formulas? derviate doesnt eequal actual
+    print("MIDDLE", getInputPrice(inputAmount, reservesTrxs1, reservesTokens1, ra) / 10 ** 6)
+    print(inputAmount, getInputPrice(inputAmount, E0, E1, ra))
+    print(inputAmount, getInputPrice(getInputPrice(inputAmount, reservesTrxs1, reservesTokens1, ra), reservesTokens2, reservesTrxs2, rb))
     return (inputAmount, getInputPrice(inputAmount, E0, E1, ra)) if inputAmount > 0 else (0,0)
 
 class Group:
@@ -45,7 +46,7 @@ class Group:
         }
 
 
-    def computeOrder(self, reservesToken0, reservesToken1):
+    def computeOrder(self, reservesToken0, reservesToken1) -> Tuple[int, int, TradingPair, TradingPair]:
         for i in range(self.noPairs):
             if self.pairs[i].isReversed:
                 rtBaseI, rtSideI = reservesToken1[i], reservesToken0[i]
@@ -67,11 +68,12 @@ class Group:
                         rtBaseI, rtSideI = reservesToken0[i], reservesToken1[i]
 
                     if self.pairs[j].isReversed:
-                        rtBasej, rtSidej = reservesToken1[j], reservesToken0[j]
+                        rtBaseJ, rtSideJ = reservesToken1[j], reservesToken0[j]
                     else:
-                        rtBasej, rtSidej = reservesToken0[j], reservesToken1[j]
-                    amountIn, amountOut = bestIaDeriv(rtSidej, rtBasej, rtSidej, rtBasej, self.pairs[i].r, self.pairs[j].r)
+                        rtBaseJ, rtSideJ = reservesToken0[j], reservesToken1[j]
+
+                    amountIn, amountOut = bestIaDeriv(rtSideI, rtBaseI, rtSideJ, rtBaseJ, self.pairs[i].r, self.pairs[j].r)
 
                     if amountIn > 0:
-                        return (amountIn / 10 ** 18, amountOut / 10 ** 18, self.pairs[i], self.pairs[j])
+                        return (amountIn, amountOut, self.pairs[i], self.pairs[j])
         return None

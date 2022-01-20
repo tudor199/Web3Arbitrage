@@ -1,0 +1,39 @@
+{
+    "provider": "https://rpc-mumbai.maticvigil.com",
+    "exchangOracleAddr": "0x67E36E2a685d8962C3A68B9ABfc130c785BAA6cF",
+    "executorAddr": "0x3Edc107c692FA16bd26df79B6114432C9e4ea772",
+    "name": {
+        "0x7409684532FF723d8285F9cDE9F99fD36133609A": "myUSDT",
+        "0x8443F3F43dFe3C6A137e64e04DF00e2C3414cF34": "myBTC",
+        "0x8954AfA98594b838bda56FE4C12a09D7739D179b": "QuickSwap",
+        "0x8fCf4B197A9Df7ab4ed511932cA6c8E1a8fe2F1d": "ApeSwap"
+    },
+    "decimals": {
+        "0x7409684532FF723d8285F9cDE9F99fD36133609A": 6,
+        "0x8443F3F43dFe3C6A137e64e04DF00e2C3414cF34": 6
+    },
+    "groups": [
+        {
+            "sideToken": "0x7409684532FF723d8285F9cDE9F99fD36133609A",
+            "minAmount": 1000,
+            "pairs": [
+                {
+                    "address": "0x6515d49A04F2346F13fd771AcAbE2F715a42B505",
+                    "router": "0x8954AfA98594b838bda56FE4C12a09D7739D179b",
+                    "r": 0.997,
+                    "baseToken": "0x8443F3F43dFe3C6A137e64e04DF00e2C3414cF34",
+                    "sideToken": "0x7409684532FF723d8285F9cDE9F99fD36133609A",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x9696f42dbdeaA769594b7F46B985b3a8b87d54cC",
+                    "router": "0x8fCf4B197A9Df7ab4ed511932cA6c8E1a8fe2F1d",
+                    "r": 0.998,
+                    "baseToken": "0x8443F3F43dFe3C6A137e64e04DF00e2C3414cF34",
+                    "sideToken": "0x7409684532FF723d8285F9cDE9F99fD36133609A",
+                    "isReversed": true
+                }
+            ]
+        }
+    ]
+}
