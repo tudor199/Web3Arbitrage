@@ -3,27 +3,23 @@ from typing import Tuple
 from group.trading_pair import TradingPair
 
 
+def getInputPrice(amountIn, reserveIn, reserveOut, r):
+    amountInWithFee = amountIn * r
+    numerator = amountInWithFee * reserveOut
+    denominator = reserveIn + amountInWithFee
+    return int(numerator / denominator)
 
-def getInputPrice(input_amount: int, input_reserve: int, output_reserve: int, r) -> int:
-    numerator = output_reserve * r * input_amount
-    denominator = input_reserve + r * input_amount
-    return int(numerator // denominator)
-
-def getVirtualReserves(reservesTrxs1, reservesTokens1, reservesTrxs2, reservesTokens2, ra, rb):
+def getVirtualReserves(RA0, RA1, RB0, RB1, ra, rb):
     return (
-        int((reservesTrxs1 * reservesTokens2) / (reservesTokens2 + reservesTokens1 * rb)),
-        int((rb * reservesTokens1 * reservesTrxs2) / (reservesTokens2 + reservesTokens1 * rb))
+        (RA0 * RB1) / (RB1 + RA1 * rb),
+        (rb * RA1 * RB0) / (RB1 + RA1 * rb)
     )
 
-def bestIaDeriv(reservesTrxs1, reservesTokens1, reservesTrxs2, reservesTokens2, ra, rb):
-    E0, E1 = getVirtualReserves(reservesTrxs1, reservesTokens1, reservesTrxs2, reservesTokens2, ra, rb)
+def bestIaDeriv(RA0, RA1, RB0, RB1, ra, rb):
+    E0, E1 = getVirtualReserves(RA0, RA1, RB0, RB1, ra, rb)
     inputAmount = int((sqrt(E0 * E1 * ra) - E0) / ra)
-    # print(ra, rb)
-    # TODO bad formulas? derviate doesnt eequal actual
-    print("MIDDLE", getInputPrice(inputAmount, reservesTrxs1, reservesTokens1, ra) / 10 ** 6)
-    print(inputAmount, getInputPrice(inputAmount, E0, E1, ra))
-    print(inputAmount, getInputPrice(getInputPrice(inputAmount, reservesTrxs1, reservesTokens1, ra), reservesTokens2, reservesTrxs2, rb))
-    return (inputAmount, getInputPrice(inputAmount, E0, E1, ra)) if inputAmount > 0 else (0,0)
+    # return (inputAmount, getInputPrice(inputAmount, E0, E1, ra)) if inputAmount > 0 else (0,0)
+    return (inputAmount, getInputPrice(getInputPrice(inputAmount, RA0, RA1, ra), RB1, RB0, rb)) if inputAmount > 0 else (0,0)
 
 class Group:
     def __init__(self, sideToken, minAmount: int, pairs: list, name: dict={}, decimals: dict={}) -> None:
@@ -61,7 +57,6 @@ class Group:
         for i in range(self.noPairs):
             for j in range(self.noPairs):
                 if i != j:
-                    # check his with mock
                     if self.pairs[i].isReversed:
                         rtBaseI, rtSideI = reservesToken1[i], reservesToken0[i]
                     else:
