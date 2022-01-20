@@ -1,18 +1,11 @@
-import json
-from textwrap import indent
 import traceback
-from typing import List
 from web3 import Web3
 from web3.contract import Contract
 from datetime import datetime
 from time import sleep
 
 from group.group import Group
-from group.token.base_token import BaseToken
-from group.token.side_token import SideToken
-from group.trading_pair import TradingPair
 from utils.logger import Logger
-from utils.utilities import address0
 
 class Worker:
     def __init__(self, account: dict, abi: dict, web3: Web3, logger: Logger, sideTokens: list, groupsJson: list,

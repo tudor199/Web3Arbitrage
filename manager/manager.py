@@ -1,7 +1,6 @@
 from collections import Counter
 from datetime import datetime
 import json
-from os import stat
 import sys
 import traceback
 from web3 import Web3
@@ -9,14 +8,11 @@ from web3 import Web3
 from threading import Thread
 from time import sleep
 from group.group import Group
-from group.token.base_token import BaseToken
-from group.token.side_token import SideToken
-from group.trading_pair import TradingPair
 
 
 from manager.worker import Worker
 from utils.logger import Logger
-from utils.utilities import GWEI_1, address0
+from utils.utilities import address0
 
 from web3.middleware import geth_poa_middleware
 

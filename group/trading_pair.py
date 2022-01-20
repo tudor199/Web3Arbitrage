@@ -1,8 +1,3 @@
-from audioop import add
-from group.token.base_token import BaseToken
-from group.token.side_token import SideToken
-
-
 class TradingPair:
     def __init__(self, address: str, router: str, r: float, baseToken: str, sideToken: str, isReversed: bool) -> None:
         self.address = address

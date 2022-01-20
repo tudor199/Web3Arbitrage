@@ -12,10 +12,8 @@ from secret import account
 
 
 parser = argparse.ArgumentParser()
-
 parser.add_argument('--network', '-n', default='polygon', choices=models.keys())
 parser.add_argument('--preprocessing', '-p', required=False, default=False, action='store_true')
-
 args = parser.parse_args()
 
 model = models[args.network]
