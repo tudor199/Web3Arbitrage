@@ -3,7 +3,7 @@ from typing import Tuple
 from group.trading_pair import TradingPair
 
 
-def getInputPrice(amountIn, reserveIn, reserveOut, r):
+def getAmountOut(amountIn, reserveIn, reserveOut, r):
     amountInWithFee = amountIn * r
     numerator = amountInWithFee * reserveOut
     denominator = reserveIn + amountInWithFee
@@ -19,7 +19,7 @@ def bestIaDeriv(RA0, RA1, RB0, RB1, ra, rb):
     E0, E1 = getVirtualReserves(RA0, RA1, RB0, RB1, ra, rb)
     inputAmount = int((sqrt(E0 * E1 * ra) - E0) / ra)
     # return (inputAmount, getInputPrice(inputAmount, E0, E1, ra)) if inputAmount > 0 else (0,0)
-    return (inputAmount, getInputPrice(getInputPrice(inputAmount, RA0, RA1, ra), RB1, RB0, rb)) if inputAmount > 0 else (0,0)
+    return (inputAmount, getAmountOut(getAmountOut(inputAmount, RA0, RA1, ra), RB1, RB0, rb)) if inputAmount > 0 else (0,0)
 
 class Group:
     def __init__(self, sideToken, minAmount: int, pairs: list, name: dict={}, decimals: dict={}) -> None:

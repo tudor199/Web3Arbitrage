@@ -3,7 +3,7 @@ models = {
         'provider': 'https://rpc-mumbai.maticvigil.com',
         
         'exchangOracleAddr': '0x67E36E2a685d8962C3A68B9ABfc130c785BAA6cF',
-        'executorAddr': '0x3Edc107c692FA16bd26df79B6114432C9e4ea772',
+        'executorAddr': '0xc6A3f8297E623fCCcf2B46642C1496B596887AD1',
         'routers': [
             {
                 'name': 'QuickSwap',
