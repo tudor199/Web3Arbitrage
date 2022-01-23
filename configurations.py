@@ -3,7 +3,7 @@ models = {
         'provider': 'https://rpc-mumbai.maticvigil.com',
         
         'exchangOracleAddr': '0x67E36E2a685d8962C3A68B9ABfc130c785BAA6cF',
-        'executorAddr': '0xC8394d1F6B74Ccb16E28Aa7cCEc080371954a43A',
+        'executorAddr': '0xc6A3f8297E623fCCcf2B46642C1496B596887AD1',
         'routers': [
             {
                 'name': 'QuickSwap',
@@ -38,7 +38,7 @@ models = {
         'provider': 'https://matic-mainnet.chainstacklabs.com',
         
         'exchangOracleAddr': '0x301D28A1f3B833176791Ee8B55cAABcFCA0c1242',
-        'executorAddr': '0xCE5950F89eaFa53fc8883941E0d4d8FFf107aa4E',
+        'executorAddr': '0xC8394d1F6B74Ccb16E28Aa7cCEc080371954a43A',
         'routers': [
             {
                 'name': 'QuickSwap',

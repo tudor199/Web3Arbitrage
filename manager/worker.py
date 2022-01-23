@@ -51,8 +51,6 @@ class Worker:
                             # Revert check
                             self.web3.eth.estimateGas(tx)
 
-                            print(self.web3.eth.gasPrice * 2)
-
                             signedTransaction = self.web3.eth.account.signTransaction(tx, private_key=self.account['privateKey'])
                             self.web3.eth.sendRawTransaction(signedTransaction.rawTransaction)
                             txHash = signedTransaction['hash'].hex()
