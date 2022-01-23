@@ -28,49 +28,45 @@ class Worker:
             offsets.append(offsets[-1] + group.noPairs)
             tradingPairAddrs += list(map(lambda pair: pair.address, group.pairs))
         
-        ethBalance = None
-        sideTokensBalance = None
+        nonce = self.web3.eth.getTransactionCount(self.account['address'])
+        arbitrageGasRequired = 300_000
         while True:
             try:
-                if ethBalance is None:
-                    ethBalance, tokensBalance = self.exchangeOracle.functions.getAccountBalance(self.sideTokens, self.account['address']).call()
-                    sideTokensBalance = dict(zip(self.sideTokens, tokensBalance))
-                
-                print(f"--------------------------{datetime.now()}----------------------------")
                 reservesToken0, reservesToken1 = self.exchangeOracle.functions.getExchangesState(tradingPairAddrs).call()
                 for (i, group) in enumerate(self.groups):
                     order = group.computeOrder(reservesToken0[offsets[i] : offsets[i + 1]], reservesToken1[offsets[i] : offsets[i + 1]])
                     if order:
                         amountIn, amountOut, pairBuy, pairSell = order
-                        print(f"{pairBuy.address} ({self.name[pairBuy.router]}) -> {pairSell.address} ({self.name[pairSell.router]})")
-                        print(f"FOUND {self.name[pairBuy.sideToken]}: {amountIn / 10 ** 6} -> {amountOut / 10 ** 6} ")
-                        minProfit = 1000
-                        if amountOut - amountIn > minProfit:
-                            tx = self.executor.functions.execute(amountIn, minProfit,
+                        if amountOut - amountIn > group.minAmount:
+                            tx = self.executor.functions.execute(amountIn, group.minAmount,
                                                                  pairBuy.address, int(pairBuy.r * 10000),
                                                                  pairSell.address, int(pairSell.r * 10000),
                                                                  pairBuy.sideToken, pairBuy.baseToken
                             ).buildTransaction({
-                                'gas': 1_000_000,
-                                'gasPrice': self.web3.toWei(2, 'GWEI'),
+                                'gas': arbitrageGasRequired,
+                                'gasPrice': self.web3.eth.gasPrice * 2,
                                 'from': self.account['address'],
-                                'nonce': self.web3.eth.getTransactionCount(self.account['address'])
+                                'nonce': nonce
                             })
+                            nonce += 1
+                            
+                            # Revert check
+                            self.web3.eth.estimateGas(tx)
 
-                            gas_estimate = self.web3.eth.estimateGas(tx)
-                            print(f"GasEstimate: {gas_estimate}")
+                            print(self.web3.eth.gasPrice * 2)
+
                             signedTransaction = self.web3.eth.account.signTransaction(tx, private_key=self.account['privateKey'])
                             self.web3.eth.sendRawTransaction(signedTransaction.rawTransaction)
                             txHash = signedTransaction['hash'].hex()
-                            self.logger.write(f"txHash: {txHash}", 1)
+                            self.logger.write(f"Transaction submited with txHash: {txHash}", 2)
                             while True:
+                                sleep(1)
                                 receipt = self.web3.eth.waitForTransactionReceipt(txHash)
                                 if receipt:
+                                    self.logger.write(f"asdasd : {'SUCCESS' if receipt['status'] == 1 else 'REVERT' }", 2)
                                     for key in receipt:
                                         self.logger.write(f"{key}: {receipt[key]}", 1)
                                     break
-                            quit()
-                    print()
                 sleep(1)
 
             except Exception as e:

@@ -49,7 +49,6 @@ class Manager:
             for sideToken in model['sides']:
                 symbol = f"{baseToken['name']}/{sideToken['name']}"
                 minAmount = int(sideToken['minAmount'] * 10 ** sideToken['decimals'])
-                print(f"------------------------------------------------------------{symbol}------------------------------------------------------------")
                 pairs = []
                 for router in model['routers']:
                     routerContract = web3.eth.contract(address=router['address'], abi=abi['IUniswapRouter'])
@@ -58,8 +57,7 @@ class Manager:
                     pairAddr = factoryContract.functions.getPair(baseToken['address'], sideToken['address']).call()
                     if pairAddr != address0:
                         pairContract = web3.eth.contract(address=pairAddr, abi=abi['IUniswapPair'])
-                        token0Addr = pairContract.functions.token0().call()
-                        isReversed = token0Addr != baseToken['address']
+                        isReversed = baseToken['address'] > sideToken['address']
 
                         reserveToken0, reserveToken1, _ = pairContract.functions.getReserves().call()
                         if isReversed:
@@ -67,8 +65,9 @@ class Manager:
 
                         if reserveToken1 > minAmount:
                             print(f"{router['name'].ljust(15)} {symbol.ljust(15)} {pairAddr}   "
-                                    f"{'{:.8f}'.format(reserveToken1 / reserveToken0 * 10 ** (baseToken['decimals'] - sideToken['decimals']))} "
-                                    f"{'{:.8f}'.format(reserveToken0 / 10 ** baseToken['decimals'])} {'{:.8f}'.format(reserveToken1 / 10 ** sideToken['decimals'])}")
+                                    f"Rate: {'{:.8f}'.format(reserveToken1 / reserveToken0 * 10 ** (baseToken['decimals'] - sideToken['decimals']))} | "
+                                    f"{baseToken['name']}: {'{:.8f}'.format(reserveToken0 / 10 ** baseToken['decimals'])} | "
+                                    f"{sideToken['name']}: {'{:.8f}'.format(reserveToken1 / 10 ** sideToken['decimals'])}")
                             pairs.append({
                                 "address" : pairAddr,
                                 "router" : router['address'],
@@ -77,7 +76,7 @@ class Manager:
                                 "sideToken" : sideToken['address'],
                                 "isReversed" : isReversed
                             })
-                if pairs.__len__() > 1:
+                if len(pairs) > 1:
                     groups.append(Group(sideToken['address'], minAmount, pairs))
                 print()
 
@@ -107,8 +106,8 @@ class Manager:
                 ethBalance, sideTokensBalance = self.exchangeOracle.functions.getAccountBalance(self.sideTokens, self.account['address']).call()
                 msg = f"STATUS\n"
                 for (sideToken, balance) in zip(self.sideTokens, sideTokensBalance):
-                    msg += f"{self.name[sideToken].ljust(7)}: {'{:.4f}'.format(balance / 10 ** self.decimals[sideToken])}\n"
-                msg += f"{'ETH'.ljust(7)}: {'{:.4f}'.format(ethBalance / 10 ** 18)}\n"
+                    msg += f"{self.name[sideToken].ljust(7)}: {'{:.18f}'.format(balance / 10 ** self.decimals[sideToken])}\n"
+                msg += f"{'ETH'.ljust(7)}: {'{:.18f}'.format(ethBalance / 10 ** 18)}\n"
                 msg += f"Time: {datetime.now().strftime('%d-%m-%Y at %H:%M:%S')}\n"
                 self.logger.write(msg, 1)
                 sleep(self.refreshRate)

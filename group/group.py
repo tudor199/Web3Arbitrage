@@ -44,17 +44,6 @@ class Group:
 
     def computeOrder(self, reservesToken0, reservesToken1) -> Tuple[int, int, TradingPair, TradingPair]:
         for i in range(self.noPairs):
-            if self.pairs[i].isReversed:
-                rtBaseI, rtSideI = reservesToken1[i], reservesToken0[i]
-            else:
-                rtBaseI, rtSideI = reservesToken0[i], reservesToken1[i]
-
-            symbol = f"{self.name[self.pairs[i].baseToken]}_{self.name[self.pairs[i].sideToken]}"
-            print(f"{self.name[self.pairs[i].router].ljust(15)} {symbol.ljust(15)}   "
-                  f"{'{:.8f}'.format(rtSideI / rtBaseI * 10 ** (self.decimals[self.pairs[i].baseToken] - self.decimals[self.pairs[i].sideToken]))}   "
-                  f"{'{:.8f}'.format(rtBaseI / 10 ** self.decimals[self.pairs[i].baseToken])} {'{:.8f}'.format(rtSideI / 10 ** self.decimals[self.pairs[i].sideToken])}")
-                         
-        for i in range(self.noPairs):
             for j in range(self.noPairs):
                 if i != j:
                     if self.pairs[i].isReversed:

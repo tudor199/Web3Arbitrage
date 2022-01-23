@@ -1,7 +1,7 @@
 {
     "provider": "https://matic-mainnet.chainstacklabs.com",
     "exchangOracleAddr": "0x301D28A1f3B833176791Ee8B55cAABcFCA0c1242",
-    "executorAddr": "0x53B4d2B88d2a6B16FEed7A8Dd81c249A05799952",
+    "executorAddr": "0xCE5950F89eaFa53fc8883941E0d4d8FFf107aa4E",
     "name": {
         "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270": "WMATIC",
         "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619": "WETH",
@@ -56,7 +56,7 @@
     "groups": [
         {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0x019ba0325f1988213D448b3472fA1cf8D07618d7",
@@ -100,7 +100,7 @@
         },
         {
             "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-            "minAmount": 5000000,
+            "minAmount": 1000000,
             "pairs": [
                 {
                     "address": "0x1F1E4c845183EF6d50E9609F16f6f9cAE43BC9Cb",
@@ -122,7 +122,7 @@
         },
         {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0x0554059D42E26f35CC958581C71FdfD92405d02f",
@@ -181,7 +181,7 @@
                 {
                     "address": "0x7162c0AcF32820920a741D8fA466b8e6D60D530D",
                     "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-                    "r": 0.9975,
+                    "r": 0.997,
                     "baseToken": "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
                     "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
                     "isReversed": true
@@ -190,7 +190,7 @@
         },
         {
             "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-            "minAmount": 5000000,
+            "minAmount": 1000000,
             "pairs": [
                 {
                     "address": "0x7c76B6B3FE14831A39C0fec908DA5f17180df677",
@@ -211,7 +211,7 @@
                 {
                     "address": "0x75b2F458e33922bEa5572eE0AD9A9e24ddFf5888",
                     "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-                    "r": 0.9975,
+                    "r": 0.997,
                     "baseToken": "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
                     "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
                     "isReversed": true
@@ -220,7 +220,7 @@
         },
         {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0x0B3a76D33d93b2651dbf03B102EEFa9500E89243",
@@ -264,7 +264,7 @@
         },
         {
             "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-            "minAmount": 5000000,
+            "minAmount": 1000000,
             "pairs": [
                 {
                     "address": "0xD9f57D9ed738AE20C5a60241a32Fd076e69AF005",
@@ -286,7 +286,7 @@
         },
         {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0xc9A1f4cE0C3CAE4A44a7Be89c96EE783ba5D159D",
@@ -299,7 +299,7 @@
                 {
                     "address": "0xbd1769953E56313cd32F2d1F8E58fEd7477f8b40",
                     "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-                    "r": 0.9975,
+                    "r": 0.997,
                     "baseToken": "0xC168E40227E4ebD8C1caE80F7a55a4F0e6D66C97",
                     "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
                     "isReversed": true
@@ -321,7 +321,7 @@
                 {
                     "address": "0x6fA867BBFDd025780a8CFE988475220AfF51FB8b",
                     "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-                    "r": 0.9975,
+                    "r": 0.997,
                     "baseToken": "0xC168E40227E4ebD8C1caE80F7a55a4F0e6D66C97",
                     "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
                     "isReversed": true
@@ -330,7 +330,7 @@
         },
         {
             "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-            "minAmount": 5000000,
+            "minAmount": 1000000,
             "pairs": [
                 {
                     "address": "0xE16498aF4b6132a82772962f9b97d0b8Fe40f4FF",
@@ -343,7 +343,7 @@
                 {
                     "address": "0x4c38938E21cB9796932B0B0Cc3f8a088f07b49B0",
                     "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-                    "r": 0.9975,
+                    "r": 0.997,
                     "baseToken": "0xC168E40227E4ebD8C1caE80F7a55a4F0e6D66C97",
                     "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
                     "isReversed": true
@@ -374,7 +374,7 @@
         },
         {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0xEb477AE74774b697B5D515eF8ca09e24FEe413b5",
@@ -417,8 +417,30 @@
             ]
         },
         {
+            "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+            "minAmount": 1000000,
+            "pairs": [
+                {
+                    "address": "0x83af3eC743869D72d6D334d95d188Ca5D82DA1f3",
+                    "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+                    "r": 0.997,
+                    "baseToken": "0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x94E44C29549140422E90987Fe63dD3E882003d3D",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0xF2055643108305d6A56278f5f0191Cd0286c7edc",
@@ -470,7 +492,7 @@
         },
         {
             "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-            "minAmount": 5000000,
+            "minAmount": 1000000,
             "pairs": [
                 {
                     "address": "0xb674EC53adC1d72a2a25d2B5109A766cE6AD1083",
@@ -492,7 +514,7 @@
         },
         {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0xA3f2cE9f86F2E7E18Df141b6544fc906AD43F434",
@@ -514,7 +536,7 @@
         },
         {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0x3c986748414A812e455DCd5418246B8fdEd5C369",
@@ -573,7 +595,7 @@
                 {
                     "address": "0x4F19aD546C66016042623B7ADe88923c161e3a3A",
                     "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-                    "r": 0.9975,
+                    "r": 0.997,
                     "baseToken": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
                     "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
                     "isReversed": false
@@ -582,7 +604,7 @@
         },
         {
             "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-            "minAmount": 5000000,
+            "minAmount": 1000000,
             "pairs": [
                 {
                     "address": "0x70ceE55c98F6DA2685807611f115eA737d4a248E",
@@ -603,7 +625,7 @@
                 {
                     "address": "0x86cC48EDcedff70AdAcBA59dEA9B61670f90eAc3",
                     "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-                    "r": 0.9975,
+                    "r": 0.997,
                     "baseToken": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
                     "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
                     "isReversed": true
@@ -612,7 +634,7 @@
         },
         {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0xc45092e7e73951c6668f6C46AcFCa9F2B1c69aEf",
@@ -655,7 +677,7 @@
                 {
                     "address": "0xb5E1a07c9b6aB3BEe8d9Bf4066D324c5da89C07F",
                     "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-                    "r": 0.9975,
+                    "r": 0.997,
                     "baseToken": "0xb33EaAd8d922B1083446DC23f610c2567fB5180f",
                     "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
                     "isReversed": true
@@ -663,8 +685,30 @@
             ]
         },
         {
+            "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+            "minAmount": 1000000,
+            "pairs": [
+                {
+                    "address": "0x7c5b028ea6a2a123BB1c8be5d3d2935d4532961B",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0xb33EaAd8d922B1083446DC23f610c2567fB5180f",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                },
+                {
+                    "address": "0x57A3a18b898bFeddAf88C60C09A081D9fd78F340",
+                    "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
+                    "r": 0.997,
+                    "baseToken": "0xb33EaAd8d922B1083446DC23f610c2567fB5180f",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                }
+            ]
+        },
+        {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0x6b0Ce31eAD9b14c2281D80A5DDE903AB0855313A",
@@ -707,7 +751,7 @@
                 {
                     "address": "0xddA1e1A0f0a5A6De8d31D1de0d64bC37c21296b9",
                     "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-                    "r": 0.9975,
+                    "r": 0.997,
                     "baseToken": "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4",
                     "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
                     "isReversed": true
@@ -716,7 +760,7 @@
         },
         {
             "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-            "minAmount": 5000000,
+            "minAmount": 1000000,
             "pairs": [
                 {
                     "address": "0x0F9D098B5CA1eff5B1F7FeFebb429bA5c7D67bdc",
@@ -727,9 +771,17 @@
                     "isReversed": true
                 },
                 {
+                    "address": "0x658B50c8b473D6BD0b38e6a18C35BdDF245043a9",
+                    "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+                    "r": 0.997,
+                    "baseToken": "0x692597b009d13C4049a947CAB2239b7d6517875F",
+                    "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+                    "isReversed": true
+                },
+                {
                     "address": "0x216941E9c3DdA2A86C1E6285379E0301Bc8C0c4a",
                     "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-                    "r": 0.9975,
+                    "r": 0.997,
                     "baseToken": "0x692597b009d13C4049a947CAB2239b7d6517875F",
                     "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
                     "isReversed": true
@@ -738,7 +790,7 @@
         },
         {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0x634F9d9f8680349b518cb615017C105aF46CCFd2",
@@ -789,7 +841,7 @@
                 {
                     "address": "0x3a8A6831a1E866C64Bc07c3dF0f7B79ac9Ef2fA2",
                     "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-                    "r": 0.9975,
+                    "r": 0.997,
                     "baseToken": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
                     "sideToken": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
                     "isReversed": false
@@ -798,7 +850,7 @@
         },
         {
             "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-            "minAmount": 5000000,
+            "minAmount": 1000000,
             "pairs": [
                 {
                     "address": "0x8982D71337003cd172198739238adA0D5d0BD2Fe",
@@ -819,7 +871,7 @@
                 {
                     "address": "0xCF8172441b953e9609C425FCE91B32BE780FDFBD",
                     "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-                    "r": 0.9975,
+                    "r": 0.997,
                     "baseToken": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
                     "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
                     "isReversed": false
@@ -828,7 +880,7 @@
         },
         {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0x369582d2010B6eD950B571F4101e3bB9b554876F",
@@ -872,7 +924,7 @@
         },
         {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0xbc7de021CC17a0399bEe6b9FE9531E78c10526a7",
@@ -894,7 +946,7 @@
         },
         {
             "sideToken": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-            "minAmount": 2000000000000000000,
+            "minAmount": 1000000000000000000,
             "pairs": [
                 {
                     "address": "0x435711ef539e90fA1381566EDCf2721C3EBE9dcd",
@@ -938,7 +990,7 @@
         },
         {
             "sideToken": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-            "minAmount": 5000000,
+            "minAmount": 1000000,
             "pairs": [
                 {
                     "address": "0x5518037AB78552b4a043d89522aCA16206ef9eaf",

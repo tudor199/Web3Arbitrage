@@ -3,7 +3,7 @@ models = {
         'provider': 'https://rpc-mumbai.maticvigil.com',
         
         'exchangOracleAddr': '0x67E36E2a685d8962C3A68B9ABfc130c785BAA6cF',
-        'executorAddr': '0xc6A3f8297E623fCCcf2B46642C1496B596887AD1',
+        'executorAddr': '0xC8394d1F6B74Ccb16E28Aa7cCEc080371954a43A',
         'routers': [
             {
                 'name': 'QuickSwap',
@@ -38,7 +38,7 @@ models = {
         'provider': 'https://matic-mainnet.chainstacklabs.com',
         
         'exchangOracleAddr': '0x301D28A1f3B833176791Ee8B55cAABcFCA0c1242',
-        'executorAddr': '0x53B4d2B88d2a6B16FEed7A8Dd81c249A05799952',
+        'executorAddr': '0xCE5950F89eaFa53fc8883941E0d4d8FFf107aa4E',
         'routers': [
             {
                 'name': 'QuickSwap',
@@ -63,7 +63,7 @@ models = {
             {
                 'name': 'Dfyn',
                 'address': '0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429',
-                'r': 0.9975,
+                'r': 0.9970,
             },
         ],
         'bases': [
@@ -163,7 +163,7 @@ models = {
                 'name': 'WMATIC',
                 'address': '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
                 'decimals': 18,
-                'minAmount': 2,
+                'minAmount': 1,
             },
             {
                 'name': 'WETH',
@@ -175,7 +175,7 @@ models = {
                 'name': 'USDC',
                 'address': '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
                 'decimals': 6,
-                'minAmount': 5,
+                'minAmount': 1,
             },
         ],
     },
