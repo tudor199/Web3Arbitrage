@@ -28,7 +28,6 @@ class Worker:
             offsets.append(offsets[-1] + group.noPairs)
             tradingPairAddrs += list(map(lambda pair: pair.address, group.pairs))
         
-        nonce = self.web3.eth.getTransactionCount(self.account['address'])
         arbitrageGasRequired = 300_000
         while True:
             try:
@@ -46,9 +45,8 @@ class Worker:
                                 'gas': arbitrageGasRequired,
                                 'gasPrice': self.web3.eth.gasPrice * 2,
                                 'from': self.account['address'],
-                                'nonce': nonce
+                                'nonce': self.web3.eth.getTransactionCount(self.account['address'])
                             })
-                            nonce += 1
                             
                             # Revert check
                             self.web3.eth.estimateGas(tx)
