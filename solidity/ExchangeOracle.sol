@@ -9,6 +9,7 @@ interface IERC20 {
 }
 
 contract BalanceOracle {
+    // given a list of tokens and an account, returns the amount of ETH and the amounts of tokens which that account holds
     function getAccountBalance(address[] memory tokensAddrs, address account)
         public view returns (uint256 ethBalance, uint256[] memory tokensBalance) {
 
@@ -21,6 +22,7 @@ contract BalanceOracle {
         }
     }
 
+    // given a list of UniSwapV2 pairs returns their reserves
     function getExchangesState(address[] memory pairsAddrs)
         public view returns (uint256[] memory reservesToken0, uint256[] memory reservesToken1) {
 
