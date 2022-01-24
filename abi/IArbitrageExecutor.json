@@ -1,10 +1,5 @@
 [
 	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -104,19 +99,6 @@
 			}
 		],
 		"name": "uniswapV2Call",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "tokenAddr",
-				"type": "address"
-			}
-		],
-		"name": "withdrawToken",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

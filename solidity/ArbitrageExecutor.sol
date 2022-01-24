@@ -26,11 +26,6 @@ interface IERC20 {
 
 contract ArbitrageExecutor {
     using SafeMath for uint;
-    address private owner;
-
-    constructor() {
-        owner = msg.sender;
-    }
 
     // given an input amount of an asset and pair reserves, returns the maximum output amount of the other asset
     function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut, uint r) internal pure returns (uint amountOut) {
@@ -93,6 +88,6 @@ contract ArbitrageExecutor {
         );
 
         // Send profit to contract owner
-        IERC20(sideTokenAddr).transfer(owner, finalAmount - initialAmount);
+        IERC20(sideTokenAddr).transfer(msg.sender, finalAmount - initialAmount);
     }
 }
