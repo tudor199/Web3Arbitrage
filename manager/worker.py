@@ -63,6 +63,8 @@ class Worker:
                                     for key in receipt:
                                         self.logger.write(f"{key}: {receipt[key]}", 1)
                                     break
+                    print()
+                print(datetime.now())
                 sleep(1)
 
             except Exception as e:
