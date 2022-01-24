@@ -5,7 +5,7 @@ interface IUniswapPair {
 }
 
 interface IERC20 {
-    function balanceOf(address _owner) external view returns (uint256 balance);
+    function balanceOf(address owner) external view returns (uint256 balance);
 }
 
 contract BalanceOracle {

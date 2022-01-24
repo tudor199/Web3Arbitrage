@@ -1,36 +1,36 @@
 {
     "provider": "https://rpc-mumbai.maticvigil.com",
-    "exchangOracleAddr": "0x67E36E2a685d8962C3A68B9ABfc130c785BAA6cF",
-    "executorAddr": "0xc6A3f8297E623fCCcf2B46642C1496B596887AD1",
+    "exchangOracleAddr": "0xeec575A29aeD1DD70f9785667063Cc628bD20A8D",
+    "executorAddr": "0xA2c60875DC8d2053135F1EA237ab99147782b8eD",
     "name": {
-        "0x7409684532FF723d8285F9cDE9F99fD36133609A": "myUSDT",
-        "0x8443F3F43dFe3C6A137e64e04DF00e2C3414cF34": "myBTC",
+        "0x02a52E76fA17Cc920d3EBac4aa8E97bca5876156": "myUSDT",
+        "0x47FF7692217d941bD741E92a9A5dcFDe86E788AB": "myBTC",
         "0x8954AfA98594b838bda56FE4C12a09D7739D179b": "QuickSwap",
         "0x8fCf4B197A9Df7ab4ed511932cA6c8E1a8fe2F1d": "ApeSwap"
     },
     "decimals": {
-        "0x7409684532FF723d8285F9cDE9F99fD36133609A": 6,
-        "0x8443F3F43dFe3C6A137e64e04DF00e2C3414cF34": 6
+        "0x02a52E76fA17Cc920d3EBac4aa8E97bca5876156": 6,
+        "0x47FF7692217d941bD741E92a9A5dcFDe86E788AB": 18
     },
     "groups": [
         {
-            "sideToken": "0x7409684532FF723d8285F9cDE9F99fD36133609A",
-            "minAmount": 1000,
+            "sideToken": "0x02a52E76fA17Cc920d3EBac4aa8E97bca5876156",
+            "minAmount": 100000000,
             "pairs": [
                 {
-                    "address": "0x6515d49A04F2346F13fd771AcAbE2F715a42B505",
+                    "address": "0xD66Ec95154f13C43Bb203b9F6A4483B8d27eaA92",
                     "router": "0x8954AfA98594b838bda56FE4C12a09D7739D179b",
                     "r": 0.997,
-                    "baseToken": "0x8443F3F43dFe3C6A137e64e04DF00e2C3414cF34",
-                    "sideToken": "0x7409684532FF723d8285F9cDE9F99fD36133609A",
+                    "baseToken": "0x47FF7692217d941bD741E92a9A5dcFDe86E788AB",
+                    "sideToken": "0x02a52E76fA17Cc920d3EBac4aa8E97bca5876156",
                     "isReversed": true
                 },
                 {
-                    "address": "0x9696f42dbdeaA769594b7F46B985b3a8b87d54cC",
+                    "address": "0x69c8C6BD3D616b18F389351D2c08206b2b55697B",
                     "router": "0x8fCf4B197A9Df7ab4ed511932cA6c8E1a8fe2F1d",
                     "r": 0.998,
-                    "baseToken": "0x8443F3F43dFe3C6A137e64e04DF00e2C3414cF34",
-                    "sideToken": "0x7409684532FF723d8285F9cDE9F99fD36133609A",
+                    "baseToken": "0x47FF7692217d941bD741E92a9A5dcFDe86E788AB",
+                    "sideToken": "0x02a52E76fA17Cc920d3EBac4aa8E97bca5876156",
                     "isReversed": true
                 }
             ]

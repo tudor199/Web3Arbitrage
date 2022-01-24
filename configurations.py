@@ -2,8 +2,8 @@ models = {
     'testpolygon' :{
         'provider': 'https://rpc-mumbai.maticvigil.com',
         
-        'exchangOracleAddr': '0x67E36E2a685d8962C3A68B9ABfc130c785BAA6cF',
-        'executorAddr': '0xc6A3f8297E623fCCcf2B46642C1496B596887AD1',
+        'exchangOracleAddr': '0xeec575A29aeD1DD70f9785667063Cc628bD20A8D',
+        'executorAddr': '0xA2c60875DC8d2053135F1EA237ab99147782b8eD',
         'routers': [
             {
                 'name': 'QuickSwap',
@@ -19,17 +19,16 @@ models = {
         'bases': [
             {
                 'name': 'myBTC',
-                'address': '0x8443F3F43dFe3C6A137e64e04DF00e2C3414cF34',
-                'decimals': 6,
-                'minAmount': 0.001,
+                'address': '0x47FF7692217d941bD741E92a9A5dcFDe86E788AB',
+                'decimals': 18,
             },
         ],
         'sides' : [
             {
                 'name': 'myUSDT',
-                'address': '0x7409684532FF723d8285F9cDE9F99fD36133609A',
+                'address': '0x02a52E76fA17Cc920d3EBac4aa8E97bca5876156',
                 'decimals': 6,
-                'minAmount': 0.001,
+                'minAmount': 100,
             },
         ],
     },
@@ -37,8 +36,8 @@ models = {
         # 'provider': 'https://rpc-mainnet.matic.network',
         'provider': 'https://matic-mainnet.chainstacklabs.com',
         
-        'exchangOracleAddr': '0x301D28A1f3B833176791Ee8B55cAABcFCA0c1242',
-        'executorAddr': '0xC8394d1F6B74Ccb16E28Aa7cCEc080371954a43A',
+        'exchangOracleAddr': '0x74Ef0781dd8bD7849c59B0f5e7888aa1932708AF',
+        'executorAddr': '0x61255D9387a325BEA3bF3B994d32EE38B5947830',
         'routers': [
             {
                 'name': 'QuickSwap',

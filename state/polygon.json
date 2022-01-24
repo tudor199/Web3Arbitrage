@@ -1,7 +1,7 @@
 {
     "provider": "https://matic-mainnet.chainstacklabs.com",
-    "exchangOracleAddr": "0x301D28A1f3B833176791Ee8B55cAABcFCA0c1242",
-    "executorAddr": "0xC8394d1F6B74Ccb16E28Aa7cCEc080371954a43A",
+    "exchangOracleAddr": "0x74Ef0781dd8bD7849c59B0f5e7888aa1932708AF",
+    "executorAddr": "0x61255D9387a325BEA3bF3B994d32EE38B5947830",
     "name": {
         "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270": "WMATIC",
         "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619": "WETH",
