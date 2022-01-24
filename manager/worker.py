@@ -36,33 +36,35 @@ class Worker:
                     order = group.computeOrder(reservesToken0[offsets[i] : offsets[i + 1]], reservesToken1[offsets[i] : offsets[i + 1]])
                     if order:
                         amountIn, amountOut, pairBuy, pairSell = order
-                        if amountOut - amountIn > group.minAmount:
-                            tx = self.executor.functions.execute(amountIn, group.minAmount,
-                                                                 pairBuy.address, int(pairBuy.r * 10000),
-                                                                 pairSell.address, int(pairSell.r * 10000),
-                                                                 pairBuy.sideToken, pairBuy.baseToken
-                            ).buildTransaction({
-                                'gas': arbitrageGasRequired,
-                                'gasPrice': self.web3.eth.gasPrice * 2,
-                                'from': self.account['address'],
-                                'nonce': self.web3.eth.getTransactionCount(self.account['address'])
-                            })
-                            
-                            # Revert check
-                            self.web3.eth.estimateGas(tx)
+                        self.logger.write(f"ARBITRAGE_FOUND: {self.name[pairBuy.baseToken]}/{self.name[pairBuy.sideToken]} on {self.name[pairBuy.router]} -> {self.name[pairSell.router]}\n"
+                                          f"Amounts: {amountIn / 10 ** self.decimals[pairBuy.sideToken]} -> {amountOut / 10 ** self.decimals[pairBuy.sideToken]}\n"
+                                          f"Profit: {(amountOut - amountIn) / 10 ** self.decimals[pairBuy.sideToken]} {self.name[pairBuy.sideToken]}", 2)
+                        tx = self.executor.functions.execute(amountIn, group.minAmount,
+                                                                pairBuy.address, int(pairBuy.r * 10000),
+                                                                pairSell.address, int(pairSell.r * 10000),
+                                                                pairBuy.sideToken, pairBuy.baseToken
+                        ).buildTransaction({
+                            'gas': arbitrageGasRequired,
+                            'gasPrice': self.web3.eth.gasPrice * 2,
+                            'from': self.account['address'],
+                            'nonce': self.web3.eth.getTransactionCount(self.account['address'])
+                        })
+                        
+                        # Revert check
+                        self.web3.eth.estimateGas(tx)
 
-                            signedTransaction = self.web3.eth.account.signTransaction(tx, private_key=self.account['privateKey'])
-                            self.web3.eth.sendRawTransaction(signedTransaction.rawTransaction)
-                            txHash = signedTransaction['hash'].hex()
-                            self.logger.write(f"Transaction submited with txHash: {txHash}", 2)
-                            while True:
-                                sleep(1)
-                                receipt = self.web3.eth.waitForTransactionReceipt(txHash)
-                                if receipt:
-                                    self.logger.write(f"asdasd : {'SUCCESS' if receipt['status'] == 1 else 'REVERT' }", 2)
-                                    for key in receipt:
-                                        self.logger.write(f"{key}: {receipt[key]}", 1)
-                                    break
+                        signedTransaction = self.web3.eth.account.signTransaction(tx, private_key=self.account['privateKey'])
+                        self.web3.eth.sendRawTransaction(signedTransaction.rawTransaction)
+                        txHash = signedTransaction['hash'].hex()
+                        self.logger.write(f"Transaction submited with txHash: {txHash}", 2)
+                        while True:
+                            sleep(1)
+                            receipt = self.web3.eth.waitForTransactionReceipt(txHash)
+                            if receipt:
+                                self.logger.write(f"{txHash} : {'SUCCESS' if receipt['status'] == 1 else 'REVERT' }", 2)
+                                for key in receipt:
+                                    self.logger.write(f"{key}: {receipt[key]}", 1)
+                                break
                     print()
                 print(datetime.now())
                 sleep(1)

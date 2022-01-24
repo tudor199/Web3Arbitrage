@@ -62,6 +62,6 @@ class Group:
 
                     amountIn, amountOut = bestIaDeriv(rtSideI, rtBaseI, rtSideJ, rtBaseJ, self.pairs[i].r, self.pairs[j].r)
 
-                    if amountIn > 0:
+                    if amountOut - amountIn > self.minAmount:
                         return (amountIn, amountOut, self.pairs[i], self.pairs[j])
         return None
