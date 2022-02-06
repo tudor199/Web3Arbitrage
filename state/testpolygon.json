@@ -1,5 +1,6 @@
 {
     "provider": "https://rpc-mumbai.maticvigil.com",
+    "gasPrice": 10000000000,
     "exchangOracleAddr": "0xeec575A29aeD1DD70f9785667063Cc628bD20A8D",
     "executorAddr": "0xA2c60875DC8d2053135F1EA237ab99147782b8eD",
     "name": {

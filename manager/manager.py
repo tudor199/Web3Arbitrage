@@ -38,7 +38,7 @@ class Manager:
         self.name = state['name']
         self.decimals = state['decimals']
 
-        self.worker = Worker(self.account, abi, self.web3, self.logger, self.sideTokens, state['groups'], self.exchangeOracle, self.executor, self.name, self.decimals)
+        self.worker = Worker(self.account, abi, self.web3, self.logger, self.sideTokens, state['gasPrice'], state['groups'], self.exchangeOracle, self.executor, self.name, self.decimals)
 
     @staticmethod
     def generateState(abi, model, network):
@@ -85,6 +85,7 @@ class Manager:
             groupsJson.append(group.toJson())
         state = {
             'provider': model['provider'],
+            'gasPrice': web3.toWei(model['gasPrice'], 'GWEI'),
             'exchangOracleAddr': model['exchangOracleAddr'],
             'executorAddr': model['executorAddr'],
             'name': dict(map(lambda x: (x['address'], x['name']), model['sides'] + model['bases'] + model['routers'])),

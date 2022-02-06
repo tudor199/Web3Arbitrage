@@ -1,7 +1,7 @@
 models = {
     'testpolygon' :{
         'provider': 'https://rpc-mumbai.maticvigil.com',
-        
+        "gasPrice": 10,        
         'exchangOracleAddr': '0xeec575A29aeD1DD70f9785667063Cc628bD20A8D',
         'executorAddr': '0xA2c60875DC8d2053135F1EA237ab99147782b8eD',
         'routers': [
@@ -33,9 +33,8 @@ models = {
         ],
     },
     'polygon': {
-        # 'provider': 'https://rpc-mainnet.matic.network',
         'provider': 'https://matic-mainnet.chainstacklabs.com',
-        
+        "gasPrice": 2000,        
         'exchangOracleAddr': '0x74Ef0781dd8bD7849c59B0f5e7888aa1932708AF',
         'executorAddr': '0x61255D9387a325BEA3bF3B994d32EE38B5947830',
         'routers': [

@@ -8,13 +8,14 @@ from group.group import Group
 from utils.logger import Logger
 
 class Worker:
-    def __init__(self, account: dict, abi: dict, web3: Web3, logger: Logger, sideTokens: list, groupsJson: list,
+    def __init__(self, account: dict, abi: dict, web3: Web3, logger: Logger, sideTokens: list, gasPrice, groupsJson: list,
                  exchangeOracle: Contract, executor: Contract, name: dict={}, decimals: dict={}) -> None:
         self.account = account
         self.abi = abi
         self.web3 = web3
         self.logger = logger
         self.sideTokens = sideTokens
+        self.gasPrice = gasPrice
         self.groups = list(map(lambda groupJson: Group(**groupJson, name=name, decimals=decimals), groupsJson))
         self.exchangeOracle = exchangeOracle
         self.executor = executor
@@ -28,6 +29,7 @@ class Worker:
             offsets.append(offsets[-1] + group.noPairs)
             tradingPairAddrs += list(map(lambda pair: pair.address, group.pairs))
         
+        nonce = self.web3.eth.getTransactionCount(self.account['address'])
         arbitrageGasRequired = 300_000
         while True:
             try:
@@ -45,13 +47,11 @@ class Worker:
                                                                 pairBuy.sideToken, pairBuy.baseToken
                         ).buildTransaction({
                             'gas': arbitrageGasRequired,
-                            'gasPrice': self.web3.eth.gasPrice * 2,
+                            'gasPrice': self.gasPrice,
                             'from': self.account['address'],
-                            'nonce': self.web3.eth.getTransactionCount(self.account['address'])
+                            'nonce': nonce
                         })
-                        
-                        # Revert check
-                        self.web3.eth.estimateGas(tx)
+                        nonce += 1
 
                         signedTransaction = self.web3.eth.account.signTransaction(tx, private_key=self.account['privateKey'])
                         self.web3.eth.sendRawTransaction(signedTransaction.rawTransaction)
