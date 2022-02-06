@@ -38,9 +38,9 @@ class Worker:
                     order = group.computeOrder(reservesToken0[offsets[i] : offsets[i + 1]], reservesToken1[offsets[i] : offsets[i + 1]])
                     if order:
                         amountIn, amountOut, pairBuy, pairSell = order
-                        self.logger.write(f"ARBITRAGE_FOUND: {self.name[pairBuy.baseToken]}/{self.name[pairBuy.sideToken]} on {self.name[pairBuy.router]} -> {self.name[pairSell.router]}\n"
+                        self.logger.write(f"ARBITRAGE_FOUND at {datetime.now().strftime('%d-%m-%Y at %H:%M:%S')}: {self.name[pairBuy.baseToken]}/{self.name[pairBuy.sideToken]} on {self.name[pairBuy.router]} -> {self.name[pairSell.router]}\n"
                                           f"Amounts: {amountIn / 10 ** self.decimals[pairBuy.sideToken]} -> {amountOut / 10 ** self.decimals[pairBuy.sideToken]}\n"
-                                          f"Profit: {(amountOut - amountIn) / 10 ** self.decimals[pairBuy.sideToken]} {self.name[pairBuy.sideToken]}", 2)
+                                          f"Profit: {(amountOut - amountIn) / 10 ** self.decimals[pairBuy.sideToken]} {self.name[pairBuy.sideToken]}", 0)
                         tx = self.executor.functions.execute(amountIn, group.minAmount,
                                                                 pairBuy.address, int(pairBuy.r * 10000),
                                                                 pairSell.address, int(pairSell.r * 10000),
@@ -56,14 +56,18 @@ class Worker:
                         signedTransaction = self.web3.eth.account.signTransaction(tx, private_key=self.account['privateKey'])
                         self.web3.eth.sendRawTransaction(signedTransaction.rawTransaction)
                         txHash = signedTransaction['hash'].hex()
-                        self.logger.write(f"Transaction submited with txHash: {txHash}", 2)
+                        self.logger.write(f"TX_SUBMIT at {datetime.now().strftime('%d-%m-%Y at %H:%M:%S')}: {txHash}", 2)
                         while True:
                             sleep(1)
                             receipt = self.web3.eth.waitForTransactionReceipt(txHash)
                             if receipt:
-                                self.logger.write(f"{txHash} : {'SUCCESS' if receipt['status'] == 1 else 'REVERT' }", 2)
+                                self.logger.write(f"EXECUTION at {datetime.now().strftime('%d-%m-%Y at %H:%M:%S')} {txHash}:  "
+                                                f"{self.name[pairBuy.baseToken]}/{self.name[pairBuy.sideToken]} on {self.name[pairBuy.router]} -> {self.name[pairSell.router]} "
+                                                f"({(amountOut - amountIn) / 10 ** self.decimals[pairBuy.sideToken]} {self.name[pairBuy.sideToken]}) {'SUCCESS' if receipt['status'] == 1 else 'REVERT' }", 2)
+                                
+                                self.logger.write(f"TX_DETAILS:", 0)
                                 for key in receipt:
-                                    self.logger.write(f"{key}: {receipt[key]}", 1)
+                                    self.logger.write(f"{key}: {receipt[key]}", 0)
                                 break
                     print()
                 print(datetime.now())
