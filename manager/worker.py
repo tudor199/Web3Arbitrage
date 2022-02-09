@@ -61,7 +61,7 @@ class Worker:
                             sleep(1)
                             receipt = self.web3.eth.waitForTransactionReceipt(txHash)
                             if receipt:
-                                self.logger.write(f"EXECUTION at {datetime.now().strftime('%d-%m-%Y at %H:%M:%S')} {txHash}:  "
+                                self.logger.write(f"EXECUTION at {datetime.now().strftime('%d-%m-%Y at %H:%M:%S')}: {txHash}:  "
                                                 f"{self.name[pairBuy.baseToken]}/{self.name[pairBuy.sideToken]} on {self.name[pairBuy.router]} -> {self.name[pairSell.router]} "
                                                 f"({(amountOut - amountIn) / 10 ** self.decimals[pairBuy.sideToken]} {self.name[pairBuy.sideToken]}) {'SUCCESS' if receipt['status'] == 1 else 'REVERT' }", 2)
                                 
