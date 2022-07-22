@@ -48,7 +48,7 @@ But we don't need to have 70,000 USDC in our account, we will make use of the `f
 
 # Customizing
 
-In order to customize for a you must first publish `Exchange Oracle Contract` and `Arbitrage Executor Contract` on the blockchain (You can follow the steps here: [Publish a contract using Remix](https://remix-ide.readthedocs.io/en/latest/create_deploy.html)).
+In order to customize for a specific network you must first publish `Exchange Oracle Contract` and `Arbitrage Executor Contract` on the blockchain (You can follow the steps here: [Publish a contract using Remix](https://remix-ide.readthedocs.io/en/latest/create_deploy.html)).
 
 Then you need to add a new entry in `models` from `configuration.py`. 
 
